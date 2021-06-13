@@ -26,5 +26,9 @@ namespace AppWandre.Views
         {
 
         }
+        private void btnCapturarFoto_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

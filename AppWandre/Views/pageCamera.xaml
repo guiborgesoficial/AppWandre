@@ -2,27 +2,30 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppWandre.Views.pageCamera"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             >
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <xct:CameraView     Grid.Column="0" Grid.Row="0"
-                                x:Name="cameraView"
-                                CaptureMode="Photo"
-                                FlashMode="On"
-                                HorizontalOptions="FillAndExpand"
-                                MediaCaptured="cameraView_MediaCaptured"
-                                OnAvailable="cameraView_OnAvailable"
-                                IsAvailable="True"
-                                VerticalOptions="FillAndExpand">
+            <xct:CameraView Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
+                            x:Name="cameraView"
+                            CaptureMode="Photo"
+                            FlashMode="Off"
+                            HorizontalOptions="FillAndExpand"
+                            MediaCaptured="cameraView_MediaCaptured"
+                            OnAvailable="cameraView_OnAvailable"
+                            IsAvailable="True"
+                            VerticalOptions="FillAndExpand">
                 
             </xct:CameraView>
-            <Image Source="PNG.png" Grid.Column="0" Grid.Row="0">
+            <Image Source="PNG.png" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
 
             </Image>
+            <Button x:Name="btnCapturarFoto" Grid.Column="0" Grid.Row="1" Clicked="btnCapturarFoto_Clicked" BackgroundColor="Red" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" HorizontalOptions="Center" CornerRadius="100"></Button>
         </Grid>
 </ContentPage>
