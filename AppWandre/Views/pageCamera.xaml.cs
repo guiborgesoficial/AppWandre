@@ -16,5 +16,15 @@ namespace AppWandre.Views
         {
             InitializeComponent();
         }
+
+        private void cameraView_MediaCaptured(object sender, Xamarin.CommunityToolkit.UI.Views.MediaCapturedEventArgs e)
+        {
+
+        }
+
+        private void cameraView_OnAvailable(object sender, bool e)
+        {
+
+        }
     }
 }
