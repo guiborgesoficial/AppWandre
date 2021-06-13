@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppWandre.Views.pageOpcionais"
+             Title="Opcionais">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="30"></ColumnDefinition>
+            <ColumnDefinition Width="145"></ColumnDefinition>
+            <ColumnDefinition Width="30"></ColumnDefinition>
+            <ColumnDefinition Width="80"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+            <StackLayout Grid.Column="0">
+                <CheckBox x:Name="chkBoxAlarme"></CheckBox>
+                <CheckBox x:Name="chkBoxAirbag"></CheckBox>
+                <CheckBox x:Name="chkBoxArQuente"></CheckBox>
+                <CheckBox x:Name="chkBoxABS"></CheckBox>
+                <CheckBox x:Name="chkBoxVidro"></CheckBox>
+                <CheckBox x:Name="chkBoxTravas"></CheckBox>
+                <CheckBox x:Name="chkBoxGPS"></CheckBox>
+                <CheckBox x:Name="chkBoxRadio"></CheckBox>
+                <CheckBox x:Name="chkBoxLigaLeve"></CheckBox>
+                <CheckBox x:Name="chkBoxStartStop"></CheckBox>
+            </StackLayout>
+            <StackLayout Grid.Column="1">
+                <Label Text="Alarme" FontAttributes="Bold" Padding="-5,6,0,0"></Label>
+                <Label Text="Airbag" FontAttributes="Bold" Padding="-5,12,0,0"></Label>
+                <Label Text="Ar quente" FontAttributes="Bold" Padding="-5,5,0,0"></Label>
+                <Label Text="ABS" FontAttributes="Bold" Padding="-5,5,0,0"></Label>
+                <Label Text="Vidro" FontAttributes="Bold" Padding="-5,13,0,0"></Label>
+                <Label Text="Travas" FontAttributes="Bold" Padding="-5,13,0,0"></Label>
+                <Label Text="GPS" FontAttributes="Bold" Padding="-5,15,0,0"></Label>
+                <Label Text="Rádio" FontAttributes="Bold" Padding="-5,12,0,0"></Label>
+                <Label Text="Liga Leve" FontAttributes="Bold" Padding="-5,4,0,0"></Label>
+                <Label Text="Start Stop" FontAttributes="Bold" Padding="-5,0,0,0"></Label>
+            </StackLayout>
+
+            <StackLayout Grid.Column="2">
+                <CheckBox x:Name="chkBoxArCondicionado"></CheckBox>
+                <CheckBox x:Name="chkBoxPCdeBordo"></CheckBox>
+                <CheckBox x:Name="chkBoxChavePresencial"></CheckBox>
+                <CheckBox x:Name="chkBoxEncostoCabeça"></CheckBox>
+                <CheckBox x:Name="chkBoxSensorEstacionamento"></CheckBox>
+                <CheckBox x:Name="chkBoxDesembaçadorTraseiro"></CheckBox>
+                <CheckBox x:Name="chkBoxControleTração"></CheckBox>
+                <CheckBox x:Name="chkBoxLimpadorTraseiro"></CheckBox>
+                <CheckBox x:Name="chkBoxControleVelocidade"></CheckBox>
+                <CheckBox x:Name="chkBoxRetrovisoresEletricos"></CheckBox>
+                <CheckBox></CheckBox>
+                <CheckBox></CheckBox>
+            </StackLayout>
+            <StackLayout Grid.Column="3">
+                <Label Text="Ar condicionado" FontAttributes="Bold" Padding="-5,6,0,0"></Label>
+                <Label Text="Computador de bordo" FontAttributes="Bold" Padding="-5,12,0,0"></Label>
+                <Label Text="Chave Presencial" FontAttributes="Bold" Padding="-5,12,0,0"></Label>
+                <Label Text="Encosto de Cabeça" FontAttributes="Bold" Padding="-5,14,0,0"></Label>
+                <Label Text="Sensor de Estacionamento" FontAttributes="Bold" Padding="-5,6,0,0"></Label>
+                <Label Text="Desembaçador Traseiro" FontAttributes="Bold" Padding="-5,5,0,0"></Label>
+                <Label Text="Controle de Tração" FontAttributes="Bold" Padding="-5,13,0,0"></Label>
+                <Label Text="Limpador Traseiro" FontAttributes="Bold" Padding="-5,13,0,0"></Label>
+                <Label Text="Controle de Velocidade" FontAttributes="Bold" Padding="-5,13,0,0"></Label>
+                <Label Text="Retrovisores Elétricos" FontAttributes="Bold" Padding="-5,13,0,0"></Label>
+                <Label Text="xs" FontAttributes="Bold" Padding="-5,13,0,0"></Label>
+                <Label Text="x" FontAttributes="Bold" Padding="-5,13,0,0"></Label>
+            </StackLayout>
+        <Button x:Name="btnSalvarOpcionais" Text="SALVAR" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="1" Clicked="btnSalvarOpcionais_Clicked"></Button>
+    </Grid>
+</ContentPage>

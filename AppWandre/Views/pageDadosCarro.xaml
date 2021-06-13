@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppWandre.Views.pageDadosCarro"
+             Title="Dados do Carro">
+    <StackLayout Padding="10">
+        <Picker x:Name="pickerMarca" Title="Marca" SelectedIndexChanged="pickerMarca_SelectedIndexChanged">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Audi</x:String>
+                    <x:String>BMW</x:String>
+                    <x:String>Cherry</x:String>
+                    <x:String>Chevrolet</x:String>
+                    <x:String>Citroen</x:String>
+                    <x:String>Fiat</x:String>
+                    <x:String>Ford</x:String>
+                    <x:String>Honda</x:String>
+                    <x:String>Hyundai</x:String>
+                    <x:String>Jeep</x:String>
+                    <x:String>Kawasaki</x:String>
+                    <x:String>Kia</x:String>
+                    <x:String>Land Rover</x:String>
+                    <x:String>Mercedes Bens</x:String>
+                    <x:String>Mitsibishi</x:String>
+                    <x:String>Nissan</x:String>
+                    <x:String>Pegeot</x:String>
+                    <x:String>Renault</x:String>
+                    <x:String>Toyota</x:String>
+                    <x:String>Volksvagem</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Entry x:Name="entryModelo" Placeholder="Modelo"></Entry>
+        <Entry x:Name="entryAno" Placeholder="Ano" Keyboard="Numeric"></Entry>
+        <Entry x:Name="entryMotor" Placeholder="Motor" Keyboard="Numeric"></Entry>
+        <Picker x:Name="pickerTipoMotor" Title="Tipo do Motor">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Gasolina</x:String>
+                    <x:String>Álcool</x:String>
+                    <x:String>Flex</x:String>
+                    <x:String>Diesel</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        <Picker x:Name="pickerCambio" Title="Câmbio">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Manual</x:String>
+                    <x:String>Automático</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        <Entry x:Name="entryKM" Placeholder="Kilometragem" Keyboard="Numeric"></Entry>
+        <Entry x:Name="entryValor" Placeholder="Valor" Keyboard="Numeric"></Entry>
+        <Button x:Name="btnSalvar" Text="Salvar" Clicked="btnSalvar_Clicked"></Button>
+    </StackLayout>
+</ContentPage>
