@@ -4,7 +4,7 @@
              x:Class="AppWandre.Views.pageDadosCarro"
              Title="Dados do Carro">
     <StackLayout Padding="10">
-        <Picker x:Name="pickerMarca" Title="Marca" SelectedIndexChanged="pickerMarca_SelectedIndexChanged">
+        <Picker x:Name="pickerMarca" Title="Marca">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Audi</x:String>

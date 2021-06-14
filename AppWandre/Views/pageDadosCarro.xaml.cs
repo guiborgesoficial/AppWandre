@@ -15,16 +15,7 @@ namespace AppWandre.Views
         {
             InitializeComponent();
         }
-        private void pickerMarca_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (pickerMarca.SelectedIndex)
-            {
-                case 0:
-                    //pickerModelo.Items.Clear();
-                    break;
-            }
-        }
-
+       
         private void btnSalvar_Clicked(object sender, EventArgs e)
         {
             if (VerificandoPreenchimentoFormulario())

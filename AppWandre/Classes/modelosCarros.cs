@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WandreMobile.Classes
 {
-    public class modelosCarros
+    public class ModelosCarros
     {
         public List<string> modelosItemsSource = new List<string>();
 
