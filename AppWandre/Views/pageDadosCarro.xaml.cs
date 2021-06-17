@@ -28,7 +28,7 @@ namespace AppWandre.Views
             if (pickerMarca.SelectedIndex == -1 || entryModelo.Text == string.Empty
                || entryAno.Text == string.Empty || entryMotor.Text == string.Empty ||
                pickerTipoMotor.SelectedIndex == -1 || pickerCambio.SelectedIndex == -1 ||
-               entryKM.Text == string.Empty || entryValor.Text == string.Empty
+               entryKM.Text == string.Empty || entryValor.Text == string.Empty || pickerCompleto.SelectedIndex == - 1
             )
             {
                 DisplayAlert("Campos Obrigatórios", "Preencha todos os campos!", "OK");

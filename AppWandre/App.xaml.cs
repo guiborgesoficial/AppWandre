@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppWandre.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace AppWandre
         {
             InitializeComponent();
 
-            var página = new NavigationPage(new MainPage());
+            var página = new NavigationPage(new pageCamera());
             MainPage = página;
         }
 

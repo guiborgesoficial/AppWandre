@@ -14,6 +14,7 @@ namespace WandreMobile.Classes
         string Cambio { get; set; }
         string Kilometragem { get; set; }
         string Valor { get; set; }
+        string Completo { get; set; }
     }
     public partial class Opcionais
     {

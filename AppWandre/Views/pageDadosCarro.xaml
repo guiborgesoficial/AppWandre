@@ -54,6 +54,14 @@
         </Picker>
         <Entry x:Name="entryKM" Placeholder="Kilometragem" Keyboard="Numeric"></Entry>
         <Entry x:Name="entryValor" Placeholder="Valor" Keyboard="Numeric"></Entry>
+        <Picker x:Name="pickerCompleto" Title="Completo?">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>SIM</x:String>
+                    <x:String>NÃO</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
         <Button x:Name="btnSalvar" Text="Salvar" Clicked="btnSalvar_Clicked"></Button>
     </StackLayout>
 </ContentPage>

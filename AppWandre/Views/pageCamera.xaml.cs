@@ -1,31 +1,39 @@
-﻿using Android.Graphics;
+﻿using PCLExt.FileStorage;
+using PCLExt.FileStorage.Folders;
 using System;
+using System.Drawing;
 using System.IO;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using PCLExt.FileStorage;
-using PCLExt.FileStorage.Folders;
 
 namespace AppWandre.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class pageCamera : ContentPage
     {
+        public int contadorFotos = 1;
         public pageCamera()
         {
             InitializeComponent();
         }
-        private async void cameraView_MediaCaptured(object sender, MediaCapturedEventArgs e)
+        private void cameraView_MediaCaptured(object sender, MediaCapturedEventArgs e)
         {
-            Image foto = new Image();
-            foto.Source = e.Image;
+            CapturandoFotos(e);
+        }
+        private void CapturandoFotos(MediaCapturedEventArgs byteCamera)
+        {
+            if (contadorFotos < 10)
+            {
+                var localPasta = new LocalRootFolder();
+                var pasta = localPasta.CreateFolder("Carros", CreationCollisionOption.OpenIfExists);
+                var arquivo = pasta.CreateFile("0" + contadorFotos + ".png", CreationCollisionOption.ReplaceExisting);
 
-            var localPasta = new LocalRootFolder();
-            var pasta = localPasta.CreateFolder("Carros", CreationCollisionOption.OpenIfExists);
-            var arquivo = pasta.CreateFile("teste" + ".png", CreationCollisionOption.ReplaceExisting);
-
-            foto.Source = ImageSource.FromFile(arquivo.Path);
+                byte[] imgByte = byteCamera.ImageData;
+                File.WriteAllBytes(arquivo.Path, imgByte);
+                contadorFotos++;
+                btnCapturarFoto.Text = contadorFotos.ToString();
+            }
         }
         private void cameraView_OnAvailable(object sender, bool e)
         {
