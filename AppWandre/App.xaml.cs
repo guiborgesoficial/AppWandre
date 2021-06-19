@@ -11,7 +11,7 @@ namespace AppWandre
         {
             InitializeComponent();
 
-            var página = new NavigationPage(new PageDadosCarro());
+            var página = new NavigationPage(new PageCamera());
             MainPage = página;
         }
 

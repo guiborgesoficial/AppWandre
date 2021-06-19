@@ -93,7 +93,7 @@ namespace AppWandre.Views
                         var pastaCarro = pasta.CreateFolder(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper()), CreationCollisionOption.OpenIfExists);
 
                         var arquivoXLSX = pastaCarro.CreateFile(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".xlsx"), CreationCollisionOption.OpenIfExists);
-                        var arquivoCSV = pastaCarro.CreateFile(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".csv"), CreationCollisionOption.OpenIfExists);
+                        //var arquivoCSV = pastaCarro.CreateFile(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".csv"), CreationCollisionOption.OpenIfExists);
                         var arquivoTXT = pastaCarro.CreateFile(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".txt"), CreationCollisionOption.OpenIfExists);
 
                         string descricaoCarroContent = string.Format("{0} \b{1} \n{2} \n{3} \n{4} \nPlaca {5} \n{6} \nR${7}",
@@ -102,9 +102,12 @@ namespace AppWandre.Views
                         );
 
                         File.WriteAllBytes(arquivoXLSX.Path, excelPackage.GetAsByteArray());
-                        File.WriteAllBytes(arquivoCSV.Path, excelPackage.GetAsByteArray());
+                        //File.WriteAllBytes(arquivoCSV.Path, excelPackage.GetAsByteArray());
                         File.WriteAllText(arquivoTXT.Path, descricaoCarroContent);
-                        Navigation.PushModalAsync(new PageCamera());
+
+                        PageCamera abrirCamera = new PageCamera();
+                        abrirCamera.stringPath = pastaCarro.Path;
+                        Navigation.PushModalAsync(abrirCamera);
                     }
                 }
                 catch (Exception erro)

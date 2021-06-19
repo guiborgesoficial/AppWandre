@@ -12,6 +12,7 @@ namespace AppWandre.Views
     public partial class PageCamera : ContentPage
     {
         public int contadorFotos = 1;
+        public string stringPath;
         public PageCamera()
         {
             InitializeComponent();
@@ -24,12 +25,12 @@ namespace AppWandre.Views
         {
             if (contadorFotos < 10)
             {
-                var localPasta = new LocalRootFolder();
-                var pasta = localPasta.CreateFolder("Carros", CreationCollisionOption.OpenIfExists);
-                var pastaCarro = pasta.CreateFolder("Tipo do Carro", CreationCollisionOption.OpenIfExists);
-                var arquivo = pastaCarro.CreateFile("0" + contadorFotos + ".jpeg", CreationCollisionOption.ReplaceExisting);
 
-               
+                LocalRootFolder localPasta = new LocalRootFolder();
+                var pastaPrincipal = localPasta.GetFolder("Carros");
+                var pastaCarro = pastaPrincipal.GetFolder(stringPath);
+                var pastaFotosCruas = pastaCarro.CreateFolder("fotos_cruas", CreationCollisionOption.OpenIfExists);
+                var arquivo = pastaFotosCruas.CreateFile("0" + contadorFotos + ".jpeg", CreationCollisionOption.ReplaceExisting);
 
                 File.WriteAllBytes(arquivo.Path, byteCamera.ImageData);
                 contadorFotos++;
