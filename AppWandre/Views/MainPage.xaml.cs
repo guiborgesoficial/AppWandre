@@ -86,10 +86,10 @@ namespace AppWandre
             {
                 try
                 {
-                    await Share.RequestAsync(new ShareTextRequest
+                    await Share.RequestAsync(new ShareFileRequest
                     {
-                        Uri = pastaCarrosCompactados.Path + @"/" + item.Name + ".zip",
                         Title = "Compartilhe no WhatsApp",
+                        File = new ShareFile(pastaCarrosCompactados.Path + @"/" + item.Name + ".zip")
                     });
                 }
                 catch (Exception erro)
@@ -102,10 +102,10 @@ namespace AppWandre
                 ZipFile.CreateFromDirectory(item.Path, pastaCarrosCompactados.Path + @"/" + item.Name + ".zip");
                 try
                 {
-                    await Share.RequestAsync(new ShareTextRequest
+                    await Share.RequestAsync(new ShareFileRequest
                     {
-                        Uri = "whatsapp://send?",
-                        Title = "Compartilhe no WhatsApp"
+                        Title = "Compartilhe no WhatsApp",
+                        File = new ShareFile(pastaCarrosCompactados.Path + @"/" + item.Name + ".zip")
                     });
                 }
                 catch (Exception erro)
