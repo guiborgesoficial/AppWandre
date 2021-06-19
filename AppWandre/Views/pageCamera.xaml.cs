@@ -1,4 +1,5 @@
-﻿using PCLExt.FileStorage;
+﻿using Android.Graphics;
+using PCLExt.FileStorage;
 using PCLExt.FileStorage.Folders;
 using System;
 using System.IO;
@@ -25,22 +26,32 @@ namespace AppWandre.Views
         {
             if (contadorFotos < 10)
             {
-
                 LocalRootFolder localPasta = new LocalRootFolder();
                 var pastaPrincipal = localPasta.GetFolder("Carros");
                 var pastaCarro = pastaPrincipal.GetFolder(stringPath);
                 var pastaFotosCruas = pastaCarro.CreateFolder("fotos_cruas", CreationCollisionOption.OpenIfExists);
                 var arquivo = pastaFotosCruas.CreateFile("0" + contadorFotos + ".jpeg", CreationCollisionOption.ReplaceExisting);
 
-                File.WriteAllBytes(arquivo.Path, byteCamera.ImageData);
+                Android.Graphics.Bitmap bitmapCamera = BitmapFactory.DecodeByteArray(byteCamera.ImageData , 0, byteCamera.ImageData.Length);
+                var bitmapRotacionado = RotacionarBitmap(90, bitmapCamera);
+
+                MemoryStream stream = new MemoryStream();
+                bitmapRotacionado.Compress(Android.Graphics.Bitmap.CompressFormat.Jpeg,100, stream);
+                byte[] byteArrayRotacionado = stream.ToArray();
+                File.WriteAllBytes(arquivo.Path, byteArrayRotacionado);
+
                 contadorFotos++;
                 btnCapturarFoto.Text = contadorFotos.ToString();
             }
         }
-        private void CameraView_OnAvailable(object sender, bool e)
+        public Android.Graphics.Bitmap RotacionarBitmap(int angulo, Android.Graphics.Bitmap bitmap)
         {
-                   
+            Matrix matrix = new Matrix();
+            matrix.PostRotate(angulo);
+            return Android.Graphics.Bitmap.CreateBitmap(bitmap, 0, 0,
+                bitmap.Width, bitmap.Height, matrix, true);
         }
+
         private void BtnCapturarFoto_Clicked(object sender, EventArgs e)
         {
             cameraView.Shutter();

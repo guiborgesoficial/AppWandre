@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppWandre.Views.PageCamera"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
              >
         <Grid>
             <Grid.RowDefinitions>
@@ -12,13 +12,13 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
+       
             <xct:CameraView Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
                             x:Name="cameraView"
                             CaptureMode="Photo"
                             FlashMode="Off"
                             xct:CameraOptions="Back"
                             MediaCaptured="CameraView_MediaCaptured"
-                            OnAvailable="CameraView_OnAvailable"
                             VerticalOptions="FillAndExpand"
                             HorizontalOptions="FillAndExpand">
                 
