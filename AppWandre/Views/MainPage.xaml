@@ -39,6 +39,9 @@
                                     <MenuItem Clicked="DeletarItem"
                                         CommandParameter="{Binding .}"
                                         Text="Excluir" IsDestructive="True" />
+                                    <MenuItem Clicked="CompartilharItem"
+                                        CommandParameter="{Binding .}"
+                                        Text="Compartilhar pelo WhatsApp" />
                                 </ViewCell.ContextActions>
                                 <Grid>
                                     <Image Source="{Binding Imagem}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"/>

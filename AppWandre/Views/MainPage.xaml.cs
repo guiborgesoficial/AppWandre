@@ -7,9 +7,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace AppWandre
@@ -70,6 +72,47 @@ namespace AppWandre
             ListaCarros item = (ListaCarros)itemSelect.CommandParameter;
             ObslistaCarros.Remove(item);
             Directory.Delete(item.Path, true);
+        }
+        public async void CompartilharItem(object sender, EventArgs e)
+        {
+            var itemSelect = ((MenuItem)sender);
+            ListaCarros item = (ListaCarros)itemSelect.CommandParameter;
+
+            var localPasta = new LocalRootFolder();
+            var pastaCarros = localPasta.GetFolder("Carros");
+            var pastaCarrosCompactados = pastaCarros.CreateFolder("CarrosCompactados", CreationCollisionOption.OpenIfExists);
+
+            if(File.Exists(pastaCarrosCompactados.Path + @"/" + item.Name + ".zip"))
+            {
+                try
+                {
+                    await Share.RequestAsync(new ShareTextRequest
+                    {
+                        Uri = pastaCarrosCompactados.Path + @"/" + item.Name + ".zip",
+                        Title = "Compartilhe no WhatsApp",
+                    });
+                }
+                catch (Exception erro)
+                {
+                    await DisplayAlert("WhatsApp não instalado", erro.Message, "ok");
+                }
+            }
+            else
+            {
+                ZipFile.CreateFromDirectory(item.Path, pastaCarrosCompactados.Path + @"/" + item.Name + ".zip");
+                try
+                {
+                    await Share.RequestAsync(new ShareTextRequest
+                    {
+                        Uri = "whatsapp://send?",
+                        Title = "Compartilhe no WhatsApp"
+                    });
+                }
+                catch (Exception erro)
+                {
+                    await DisplayAlert("WhatsApp não instalado", erro.Message, "ok");
+                }
+            }
         }
     }
 }
