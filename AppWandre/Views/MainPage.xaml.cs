@@ -18,7 +18,7 @@ namespace AppWandre
 
         private void btnIniciar_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new pageDadosCarro());
+            Navigation.PushAsync(new PageDadosCarro());
         }
     }
 }

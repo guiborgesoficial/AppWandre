@@ -10,15 +10,15 @@ using Xamarin.Forms.Xaml;
 namespace AppWandre.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class pageOpcionais : ContentPage
+    public partial class PageOpcionais : ContentPage
     {
-        public pageOpcionais()
+        public PageOpcionais()
         {
             InitializeComponent();
         }
-        private void btnSalvarOpcionais_Clicked(object sender, EventArgs e)
+        private void BtnSalvarOpcionais_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new pageCamera());
+            Navigation.PushAsync(new PageCamera());
         }
     }
 }

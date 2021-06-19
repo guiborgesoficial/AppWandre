@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EPPlus" Version="5.7.0" />
     <PackageReference Include="PCLExt.FileStorage" Version="1.4.1.1" />
     <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="1.1.0" />
@@ -26,16 +27,28 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\pageCamera.xaml.cs">
+      <DependentUpon>PageCamera.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\pageDadosCarro.xaml.cs">
+      <DependentUpon>PageDadosCarro.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\pageOpcionais.xaml.cs">
+      <DependentUpon>PageOpcionais.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\pageCamera.xaml">
+    <EmbeddedResource Update="Views\PageCamera.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\pageDadosCarro.xaml">
+    <EmbeddedResource Update="Views\PageDadosCarro.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\pageOpcionais.xaml">
+    <EmbeddedResource Update="Views\PageOpcionais.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>

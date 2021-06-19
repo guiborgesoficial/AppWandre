@@ -18,6 +18,6 @@
         <Image Grid.Row="0" Grid.Column="1" 
             Source="logowl.png">
         </Image>
-        <Button Text="Inciar" Grid.Row="1" Grid.Column="1" BackgroundColor="White" Clicked="btnIniciar_Clicked"></Button>
+        <Button Text="Iniciar" Grid.Row="1" Grid.Column="1" BackgroundColor="White" Clicked="btnIniciar_Clicked"></Button>
     </Grid>
 </ContentPage>

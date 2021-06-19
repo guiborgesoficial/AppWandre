@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppWandre.Views.pageOpcionais"
+             x:Class="AppWandre.Views.PageOpcionais"
              Title="Opcionais">
     <Grid>
         <Grid.RowDefinitions>
@@ -70,6 +70,6 @@
                 <Label Text="xs" FontAttributes="Bold" Padding="-5,13,0,0"></Label>
                 <Label Text="x" FontAttributes="Bold" Padding="-5,13,0,0"></Label>
             </StackLayout>
-        <Button x:Name="btnSalvarOpcionais" Text="SALVAR" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="1" Clicked="btnSalvarOpcionais_Clicked"></Button>
+        <Button x:Name="btnSalvarOpcionais" Text="SALVAR" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="1" Clicked="BtnSalvarOpcionais_Clicked"></Button>
     </Grid>
 </ContentPage>

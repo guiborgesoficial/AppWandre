@@ -1,7 +1,6 @@
 ﻿using PCLExt.FileStorage;
 using PCLExt.FileStorage.Folders;
 using System;
-using System.Drawing;
 using System.IO;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
@@ -10,14 +9,14 @@ using Xamarin.Forms.Xaml;
 namespace AppWandre.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class pageCamera : ContentPage
+    public partial class PageCamera : ContentPage
     {
         public int contadorFotos = 1;
-        public pageCamera()
+        public PageCamera()
         {
             InitializeComponent();
         }
-        private void cameraView_MediaCaptured(object sender, MediaCapturedEventArgs e)
+        private void CameraView_MediaCaptured(object sender, MediaCapturedEventArgs e)
         {
             CapturandoFotos(e);
         }
@@ -27,19 +26,21 @@ namespace AppWandre.Views
             {
                 var localPasta = new LocalRootFolder();
                 var pasta = localPasta.CreateFolder("Carros", CreationCollisionOption.OpenIfExists);
-                var arquivo = pasta.CreateFile("0" + contadorFotos + ".png", CreationCollisionOption.ReplaceExisting);
+                var pastaCarro = pasta.CreateFolder("Tipo do Carro", CreationCollisionOption.OpenIfExists);
+                var arquivo = pastaCarro.CreateFile("0" + contadorFotos + ".jpeg", CreationCollisionOption.ReplaceExisting);
 
-                byte[] imgByte = byteCamera.ImageData;
-                File.WriteAllBytes(arquivo.Path, imgByte);
+               
+
+                File.WriteAllBytes(arquivo.Path, byteCamera.ImageData);
                 contadorFotos++;
                 btnCapturarFoto.Text = contadorFotos.ToString();
             }
         }
-        private void cameraView_OnAvailable(object sender, bool e)
+        private void CameraView_OnAvailable(object sender, bool e)
         {
                    
         }
-        private void btnCapturarFoto_Clicked(object sender, EventArgs e)
+        private void BtnCapturarFoto_Clicked(object sender, EventArgs e)
         {
             cameraView.Shutter();
         }

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppWandre.Views.pageCamera"
+             x:Class="AppWandre.Views.PageCamera"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              >
         <Grid>
@@ -16,16 +16,17 @@
                             x:Name="cameraView"
                             CaptureMode="Photo"
                             FlashMode="Off"
-                            HorizontalOptions="FillAndExpand"
-                            MediaCaptured="cameraView_MediaCaptured"
-                            OnAvailable="cameraView_OnAvailable"
-                            IsAvailable="True"
-                            VerticalOptions="FillAndExpand">
+                            xct:CameraOptions="Back"
+                            MediaCaptured="CameraView_MediaCaptured"
+                            OnAvailable="CameraView_OnAvailable"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand">
                 
             </xct:CameraView>
+            
             <Image Source="PNG.png" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
 
             </Image>
-            <Button x:Name="btnCapturarFoto" Text="0" TextColor="White" Command="{Binding ShutterCommand, Source={x:Reference cameraView}}" Grid.Column="0" Grid.Row="1" BackgroundColor="Red" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" HorizontalOptions="Center" CornerRadius="100"></Button>
+            <Button x:Name="btnCapturarFoto" Text="1" TextColor="White" Command="{Binding ShutterCommand, Source={x:Reference cameraView}}" Grid.Column="0" Grid.Row="1" BackgroundColor="Red" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" HorizontalOptions="Center" CornerRadius="100"></Button>
         </Grid>
 </ContentPage>
