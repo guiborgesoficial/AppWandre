@@ -20,11 +20,11 @@ namespace AppWandre.Views
             InitializeComponent();
         }
        
-        private void BtnSalvar_Clicked(object sender, EventArgs e)
+        private async void BtnSalvar_Clicked(object sender, EventArgs e)
         {
-            GerarPlanilha();
+            await GerarPlanilha();
         }
-        private void GerarPlanilha()
+        private async Task GerarPlanilha()
         {
             if (VerificandoPreenchimentoFormulario())
             {
@@ -89,30 +89,31 @@ namespace AppWandre.Views
                         }
 
                         var localPasta = new LocalRootFolder();
-                        var pasta = localPasta.CreateFolder("Carros", CreationCollisionOption.OpenIfExists);
-                        var pastaCarro = pasta.CreateFolder(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper()), CreationCollisionOption.OpenIfExists);
+                        var pastaCarros = await localPasta.CreateFolderAsync("Carros", CreationCollisionOption.OpenIfExists);
+                        var pastaCarroEspecifico = await pastaCarros.CreateFolderAsync(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper()), CreationCollisionOption.OpenIfExists);
 
-                        var arquivoXLSX = pastaCarro.CreateFile(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".xlsx"), CreationCollisionOption.OpenIfExists);
+                        var arquivoXLSX = await pastaCarroEspecifico.CreateFileAsync(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".xlsx"), CreationCollisionOption.OpenIfExists);
                         //var arquivoCSV = pastaCarro.CreateFile(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".csv"), CreationCollisionOption.OpenIfExists);
-                        var arquivoTXT = pastaCarro.CreateFile(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".txt"), CreationCollisionOption.OpenIfExists);
+                        var arquivoTXT = await pastaCarroEspecifico.CreateFileAsync(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".txt"), CreationCollisionOption.OpenIfExists);
 
                         string descricaoCarroContent = string.Format("{0} \b{1} \n{2} \n{3} \n{4} \nPlaca {5} \n{6} \nR${7}",
-                        pickerMarca.SelectedItem.ToString().ToUpper(), entryModelo.Text.ToUpper(), entryMotor.Text, entryAno.Text,
-                        entryDescricao.Text.ToUpper(), entryPlaca.Text.ToUpper(), entryKM.Text, entryValor.Text
+                        pickerMarca.SelectedItem.ToString().ToUpper(), entryModelo.Text.ToUpper(), entryMotor.Text, entryDescricao.Text.ToUpper(), entryAno.Text,
+                        entryPlaca.Text.ToUpper(), entryKM.Text, entryValor.Text
                         );
 
                         File.WriteAllBytes(arquivoXLSX.Path, excelPackage.GetAsByteArray());
                         //File.WriteAllBytes(arquivoCSV.Path, excelPackage.GetAsByteArray());
                         File.WriteAllText(arquivoTXT.Path, descricaoCarroContent);
 
-                        PageCamera abrirCamera = new PageCamera();
-                        abrirCamera.stringPath = pastaCarro.Path;
-                        Navigation.PushModalAsync(abrirCamera);
+                        PageOpcionais abrirOpicionais = new PageOpcionais();
+                        abrirOpicionais.stringPath = arquivoTXT.Path;
+                        abrirOpicionais.contentDadosCarro = descricaoCarroContent;
+                        await Navigation.PushModalAsync(abrirOpicionais);
                     }
                 }
                 catch (Exception erro)
                 {
-                    DisplayAlert("Erro", "Erro ao gerar planilha" + erro, "Ok");
+                    await DisplayAlert("Erro", "Erro ao gerar planilha" + erro, "Ok");
                 }
             }
         }

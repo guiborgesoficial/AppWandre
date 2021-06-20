@@ -24,7 +24,7 @@
 
             <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2">
                 <ListView x:Name="listviewCarros" 
-                          RowHeight="100" BackgroundColor="White" 
+                          RowHeight="80" BackgroundColor="White" 
                           IsPullToRefreshEnabled="True"
                           Refreshing="ListviewCarros_Refreshing"
                           RefreshCommand="{Binding .}"
@@ -54,7 +54,7 @@
                 </ListView>
             </ScrollView>
             <ImageButton x:Name="btnAdicionarCarro" BackgroundColor="Transparent"
-            Grid.Row="2" Grid.Column="1" VerticalOptions="Start" Source="plusButton2.png" 
+            Grid.Row="2" Grid.Column="1" VerticalOptions="Start" Source="plusButton.png" 
             Clicked="BtnAdicionarCarro_Clicked"/>
         </Grid>
     </ContentPage.Content>

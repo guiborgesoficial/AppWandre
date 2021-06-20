@@ -112,9 +112,6 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\plusButton.png" />
   </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\plusButton2.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>

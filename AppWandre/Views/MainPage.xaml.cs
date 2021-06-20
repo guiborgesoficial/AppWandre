@@ -26,11 +26,10 @@ namespace AppWandre
             ConsultandoCarros();
         }
 
-        private async void BtnAdicionarCarro_Clicked(object sender, EventArgs e)
+        private void BtnAdicionarCarro_Clicked(object sender, EventArgs e)
         {
             ObslistaCarros.Clear();
-            await ConsultandoCarros();
-            await Navigation.PushAsync(new PageDadosCarro());
+            Navigation.PushAsync(new PageDadosCarro());
         }
         public async Task ConsultandoCarros()
         {
@@ -115,9 +114,13 @@ namespace AppWandre
         }
         public async void ListviewCarros_Refreshing(object sender, EventArgs e)
         {
-            if(searchBarCarros.Text == string.Empty)
+            if(string.IsNullOrEmpty(searchBarCarros.Text))
             {
                 await ConsultandoCarros();
+                listviewCarros.EndRefresh();
+            }
+            else
+            {
                 listviewCarros.EndRefresh();
             }
         }

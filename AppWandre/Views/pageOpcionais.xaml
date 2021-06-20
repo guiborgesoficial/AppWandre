@@ -17,7 +17,7 @@
             <ColumnDefinition Width="80"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         
-            <StackLayout Grid.Column="0">
+            <StackLayout Grid.Column="0" x:Name="stackLayout01">
                 <CheckBox x:Name="chkBoxAlarme"></CheckBox>
                 <CheckBox x:Name="chkBoxAirbag"></CheckBox>
                 <CheckBox x:Name="chkBoxArQuente"></CheckBox>
@@ -42,7 +42,7 @@
                 <Label Text="Start Stop" FontAttributes="Bold" Padding="-5,0,0,0"></Label>
             </StackLayout>
 
-            <StackLayout Grid.Column="2">
+            <StackLayout Grid.Column="2" x:Name="stackLayout02">
                 <CheckBox x:Name="chkBoxArCondicionado"></CheckBox>
                 <CheckBox x:Name="chkBoxPCdeBordo"></CheckBox>
                 <CheckBox x:Name="chkBoxChavePresencial"></CheckBox>
