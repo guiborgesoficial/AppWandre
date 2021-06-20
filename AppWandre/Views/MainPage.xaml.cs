@@ -26,27 +26,28 @@ namespace AppWandre
             ConsultandoCarros();
         }
 
-        private void BtnAdicionarCarro_Clicked(object sender, EventArgs e)
+        private async void BtnAdicionarCarro_Clicked(object sender, EventArgs e)
         {
             ObslistaCarros.Clear();
-            ConsultandoCarros();
-            Navigation.PushAsync(new PageDadosCarro());
+            await ConsultandoCarros();
+            await Navigation.PushAsync(new PageDadosCarro());
         }
-        public void ConsultandoCarros()
+        public async Task ConsultandoCarros()
         {
+            ObslistaCarros.Clear();
             var localPasta = new LocalRootFolder();
-            var pastaCarros = localPasta.CreateFolder("Carros", CreationCollisionOption.OpenIfExists);
+            var pastaCarros = await localPasta.CreateFolderAsync("Carros", CreationCollisionOption.OpenIfExists);
 
             List<IFolder> listaPastas = new List<IFolder>();
-            listaPastas.AddRange(pastaCarros.GetFolders());
+            listaPastas.AddRange(await pastaCarros.GetFoldersAsync());
 
             try
             {
                 for (int i = 0; i < listaPastas.Count; i++)
                 {
-                    var pastaCarroInterna = pastaCarros.GetFolder(listaPastas[i].Name);
-                    var pastaFotosCruas = pastaCarroInterna.GetFolder("fotos_cruas");
-                    var imagem = pastaFotosCruas.GetFile("01.jpeg");
+                    var pastaCarroInterna = await pastaCarros.GetFolderAsync(listaPastas[i].Name);
+                    var pastaFotosCruas = await pastaCarroInterna.GetFolderAsync("fotos_cruas");
+                    var imagem = await pastaFotosCruas.GetFileAsync("01.jpeg");
 
                     ObslistaCarros.Add(new ListaCarros() { Name = listaPastas[i].Name, Path = listaPastas[i].Path, Imagem = imagem.Path });
                 }
@@ -59,11 +60,9 @@ namespace AppWandre
                 }
                 else
                 {
-                    DisplayAlert("Erro", "Este erro não é crítico, mas contacte o desenvolvedor" + erro, "PROSSEGUIR");
+                    await DisplayAlert("Erro", "Este erro não é crítico, mas contacte o desenvolvedor" + erro, "PROSSEGUIR");
                 }
             }
-            
-
             listviewCarros.ItemsSource = ObslistaCarros;
         }
         public void DeletarItem(object sender, EventArgs e)
@@ -112,6 +111,25 @@ namespace AppWandre
                 {
                     await DisplayAlert("WhatsApp não instalado", erro.Message, "ok");
                 }
+            }
+        }
+        public async void ListviewCarros_Refreshing(object sender, EventArgs e)
+        {
+            if(searchBarCarros.Text == string.Empty)
+            {
+                await ConsultandoCarros();
+                listviewCarros.EndRefresh();
+            }
+        }
+        private void searchBarCarros_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(e.NewTextValue.ToLower()))
+            {
+                listviewCarros.ItemsSource = ObslistaCarros;
+            }
+            else
+            {
+                listviewCarros.ItemsSource = ObslistaCarros.Where(x => x.Name.StartsWith(e.NewTextValue.ToLower()));
             }
         }
     }
