@@ -91,9 +91,6 @@ namespace AppWandre.Views
                     }
                 }
             }
-
-
-            await DisplayAlert("ss", contentOpcionais, "ok");
         }
         private int GetQuantidadeOpcionais(StackLayout stack)
         {
