@@ -86,7 +86,7 @@ namespace AppWandre.Views
                         }
                         else
                         {
-                            contentOpcionais += string.Format("{0}.", RetornoOpcionais[i]);
+                            contentOpcionais += string.Format("{0}s.", RetornoOpcionais[i]);
                         }
                     }
                 }
