@@ -35,7 +35,7 @@ namespace AppWandre.Views
                     using (var excelPackage = new ExcelPackage())
                     {
                         string KM;
-                        excelPackage.Workbook.Properties.Author = "Guilherme Borges";
+                        excelPackage.Workbook.Properties.Author = "guiborgesoficial";
                         excelPackage.Workbook.Properties.Title = "Meu Excel";
 
                         var sheet = excelPackage.Workbook.Worksheets.Add("Planilha 1");
@@ -54,6 +54,7 @@ namespace AppWandre.Views
 
                         for (int linha = 2; linha < 20; linha++)
                         {
+                           
                             if (int.Parse(entryKM.Text) < 80000)
                             {
                                 KM = entryKM.Text + "\nKM";
@@ -75,12 +76,50 @@ namespace AppWandre.Views
                                 loja = "l2";
                             }
 
-                            var valores = new String[] { entryModelo.Text.ToUpper(), entryMotor.Text + "\t-\t" + 
-                            entryDescricao.Text.ToUpper() + "\t-\t" + entryAno.Text + "\t-\t" + KM,
-                            entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString() + ".png",
-                            @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower() + "-" +
-                            entryPlaca.Text.ToUpper() + @"\fotos\0" + foto.ToString() + ".jpeg"
-                            };
+                            var valores = new String[] {};
+
+                            if (pickerCambio.SelectedIndex == 1)
+                            {
+                                if(pickerCompleto.SelectedIndex == 1)
+                                {
+                                    valores = new String[] {entryModelo.Text.ToUpper(), entryMotor.Text + "\t-\t" +
+                                    entryDescricao.Text.ToUpper() + "\t-\t" + pickerCambio.SelectedItem.ToString() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text + "\t-\t" + KM,
+                                    entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString() + ".png",
+                                    @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower() + "-" +
+                                    entryPlaca.Text.ToUpper() + @"\fotos\0" + foto.ToString() + ".jpeg"
+                                    };
+                                }
+                                else
+                                {
+                                    valores = new String[] {entryModelo.Text.ToUpper(), entryMotor.Text + "\t-\t" +
+                                    entryDescricao.Text.ToUpper() + "\t-\t" + pickerCambio.SelectedItem.ToString() + "\t-\t" + entryAno.Text + "\t-\t" + KM,
+                                    entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString() + ".png",
+                                    @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower() + "-" +
+                                    entryPlaca.Text.ToUpper() + @"\fotos\0" + foto.ToString() + ".jpeg"
+                                    };
+                                }
+                            }
+                            else
+                            {
+                                if (pickerCompleto.SelectedIndex == 1)
+                                {
+                                    valores = new String[] {entryModelo.Text.ToUpper(), entryMotor.Text + "\t-\t" +
+                                    entryDescricao.Text.ToUpper() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text + "\t-\t" + KM,
+                                    entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString() + ".png",
+                                    @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower() + "-" +
+                                    entryPlaca.Text.ToUpper() + @"\fotos\0" + foto.ToString() + ".jpeg"
+                                    };
+                                }
+                                else
+                                {
+                                    valores = new String[] {entryModelo.Text.ToUpper(), entryMotor.Text + "\t-\t" +
+                                    entryDescricao.Text.ToUpper() + "\t-\t" + entryAno.Text + "\t-\t" + KM,
+                                    entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString() + ".png",
+                                    @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower() + "-" +
+                                    entryPlaca.Text.ToUpper() + @"\fotos\0" + foto.ToString() + ".jpeg"
+                                    };
+                                }
+                            }
 
                             foreach (var valor in valores)
                             {

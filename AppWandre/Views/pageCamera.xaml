@@ -24,7 +24,7 @@
                 
             </xct:CameraView>
             
-            <Image Source="PNG.png" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
+            <Image Source="mascaraCamera.png" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
 
             </Image>
             <Button x:Name="btnCapturarFoto" Text="1" TextColor="White" Command="{Binding ShutterCommand, Source={x:Reference cameraView}}" Grid.Column="0" Grid.Row="1" BackgroundColor="Red" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" HorizontalOptions="Center" CornerRadius="100"></Button>

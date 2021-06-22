@@ -41,16 +41,26 @@ namespace AppWandre.Views
             {
                 if(int.Parse(RetornoDadosCarro[6]) < 80000)
                 {
-                    int index = Array.IndexOf(RetornoOpcionais, "travas");
                     if (contentRetornoOpcionais.Contains("vidros") && contentRetornoOpcionais.Contains("travas"))
                     {
+                        int indexTravas = Array.IndexOf(RetornoOpcionais, "travas");
+                        int indexVidros = Array.IndexOf(RetornoOpcionais, "vidros");
+
                         if (i < contadorOpcionais - 1)
                         {
-                            contentOpcionais += string.Format("{0}, ", RetornoOpcionais[i]);
+                            if(i == indexVidros || i == indexTravas)
+                            {
+                                i++;
+                            }
+                            else
+                            {
+                                contentOpcionais += string.Format("{0}, ", RetornoOpcionais[i]);
+                            }
                         }
                         else
                         {
-                            contentOpcionais += string.Format("{0} com {1} KM. ", RetornoOpcionais[i], RetornoDadosCarro[6]);
+                            contentOpcionais += string.Format("{0}, {1} e {2} elétricas com {3} KM. ", RetornoOpcionais[i], 
+                            RetornoOpcionais[indexVidros], RetornoOpcionais[indexTravas], RetornoDadosCarro[6]);
                         }
                     }
                     else
@@ -69,13 +79,24 @@ namespace AppWandre.Views
                 {
                     if (contentRetornoOpcionais.Contains("vidros") && contentRetornoOpcionais.Contains("travas"))
                     {
+                        int indexTravas = Array.IndexOf(RetornoOpcionais, "travas");
+                        int indexVidros = Array.IndexOf(RetornoOpcionais, "vidros");
+
                         if (i < contadorOpcionais - 1)
                         {
-                            contentOpcionais += string.Format("{0}, ", RetornoOpcionais[i]);
+                            if (i == indexVidros || i == indexTravas)
+                            {
+                                i++;
+                            }
+                            else
+                            {
+                                contentOpcionais += string.Format("{0}, ", RetornoOpcionais[i]);
+                            }
                         }
                         else
                         {
-                            contentOpcionais += string.Format("{0}. ", RetornoOpcionais[i]);
+                            contentOpcionais += string.Format("{0}, {1} e {2} elétricas. ", RetornoOpcionais[i],
+                            RetornoOpcionais[indexVidros], RetornoOpcionais[indexTravas]);
                         }
                     }
                     else
@@ -86,7 +107,7 @@ namespace AppWandre.Views
                         }
                         else
                         {
-                            contentOpcionais += string.Format("{0}s.", RetornoOpcionais[i]);
+                            contentOpcionais += string.Format("{0}.", RetornoOpcionais[i]);
                         }
                     }
                 }
