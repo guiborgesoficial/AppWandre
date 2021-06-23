@@ -2,18 +2,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppWandre.Views.PageCamera"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             NavigationPage.HasNavigationBar="False"
              >
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>  
                 <RowDefinition Height="60"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
        
-            <xct:CameraView Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
+            <xct:CameraView Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
                             x:Name="cameraView"
                             CaptureMode="Photo"
                             FlashMode="Off"
@@ -23,10 +25,18 @@
                             HorizontalOptions="FillAndExpand">
                 
             </xct:CameraView>
-            
-            <Image Source="mascaraCamera.png" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
 
-            </Image>
-            <Button x:Name="btnCapturarFoto" Text="1" TextColor="White" Command="{Binding ShutterCommand, Source={x:Reference cameraView}}" Grid.Column="0" Grid.Row="1" BackgroundColor="Red" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" HorizontalOptions="Center" CornerRadius="100"></Button>
+            <Image Source="mascaraCamera.png" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Margin="0,50,0,0"></Image>
+            
+            <Image x:Name="imgRetornoCaptura" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Scale="1.3"></Image>
+            
+            <ImageButton x:Name="btnVerificado" Source="cancelado.png" Grid.Column="0" Grid.Row="2" HorizontalOptions="Start" 
+                         IsVisible="false" BackgroundColor="Transparent" Clicked="ImageButtonCancelado_Clicked"></ImageButton>
+            <ImageButton x:Name="btnCancelado" Source="verificado.png" Grid.Column="0" Grid.Row="2" HorizontalOptions="End" 
+                         IsVisible="false" BackgroundColor="Transparent" Clicked="ImageButtonVerificado_Clicked"></ImageButton>
+            <Button x:Name="btnCapturarFoto" Text="1" TextColor="White" 
+                    Command="{Binding ShutterCommand, Source={x:Reference cameraView}}" 
+                    Grid.Column="0" Grid.Row="2" BackgroundColor="Red" WidthRequest="50" 
+                    HeightRequest="50" VerticalOptions="Center" HorizontalOptions="Center" CornerRadius="100"></Button>
         </Grid>
 </ContentPage>
