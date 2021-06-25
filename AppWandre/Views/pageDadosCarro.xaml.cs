@@ -135,7 +135,7 @@ namespace AppWandre.Views
                         //var arquivoCSV = pastaCarro.CreateFile(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".csv"), CreationCollisionOption.OpenIfExists);
                         var arquivoTXT = await pastaCarroEspecifico.CreateFileAsync(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".txt"), CreationCollisionOption.OpenIfExists);
 
-                        string descricaoCarroContent = string.Format("{0}\b{1} \n{2} \n{3} \n{4} \nPlaca {5} \n{6} \nR${7}",
+                        string descricaoCarroContent = string.Format("{0}\b{1} \n{2} \n{3} \n{4} \nPlaca {5} \n{6} \nR$ {7}",
                         pickerMarca.SelectedItem.ToString().ToUpper(), entryModelo.Text.ToUpper(), entryMotor.Text, entryDescricao.Text.ToUpper(), entryAno.Text,
                         entryPlaca.Text.ToUpper(), entryKM.Text, entryValor.Text
                         );
