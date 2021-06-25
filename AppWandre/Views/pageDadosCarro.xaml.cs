@@ -55,7 +55,7 @@ namespace AppWandre.Views
                         for (int linha = 2; linha < 20; linha++)
                         {
                            
-                            if (int.Parse(entryKM.Text) < 80000)
+                            if (int.Parse(entryKM.Text.Replace(".","")) < 80000)
                             {
                                 KM = entryKM.Text + "\nKM";
                             }
@@ -135,7 +135,7 @@ namespace AppWandre.Views
                         //var arquivoCSV = pastaCarro.CreateFile(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".csv"), CreationCollisionOption.OpenIfExists);
                         var arquivoTXT = await pastaCarroEspecifico.CreateFileAsync(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".txt"), CreationCollisionOption.OpenIfExists);
 
-                        string descricaoCarroContent = string.Format("{0} \b{1} \n{2} \n{3} \n{4} \nPlaca {5} \n{6} \nR${7}",
+                        string descricaoCarroContent = string.Format("{0}\b{1} \n{2} \n{3} \n{4} \nPlaca {5} \n{6} \nR${7}",
                         pickerMarca.SelectedItem.ToString().ToUpper(), entryModelo.Text.ToUpper(), entryMotor.Text, entryDescricao.Text.ToUpper(), entryAno.Text,
                         entryPlaca.Text.ToUpper(), entryKM.Text, entryValor.Text
                         );
@@ -145,7 +145,8 @@ namespace AppWandre.Views
                         File.WriteAllText(arquivoTXT.Path, descricaoCarroContent);
 
                         PageOpcionais abrirOpicionais = new PageOpcionais();
-                        abrirOpicionais.stringPath = arquivoTXT.Path;
+                        abrirOpicionais.stringPathPasta = pastaCarroEspecifico.Path;
+                        abrirOpicionais.stringPathTxt = arquivoTXT.Path;
                         abrirOpicionais.contentDadosCarro = descricaoCarroContent;
                         await Navigation.PushModalAsync(abrirOpicionais);
                     }

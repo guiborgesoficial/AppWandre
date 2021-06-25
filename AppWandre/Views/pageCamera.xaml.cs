@@ -72,7 +72,6 @@ namespace AppWandre.Views
 
         private void ImageButtonCancelado_Clicked(object sender, EventArgs e)
         {
-            contadorFotos--;
             imgRetornoCaptura.IsVisible = false;
             btnCancelado.IsVisible = false;
             btnVerificado.IsVisible = false;
@@ -82,7 +81,6 @@ namespace AppWandre.Views
 
         private void ImageButtonVerificado_Clicked(object sender, EventArgs e)
         {
-            contadorFotos++;
             imgRetornoCaptura.IsVisible = false;
             btnCancelado.IsVisible = false;
             btnVerificado.IsVisible = false;
