@@ -32,6 +32,9 @@ namespace AppWandre.Views
             try
             {
                 contadorOpcionais = 0;
+
+                GetQuantidadeOpcionais();
+                /*
                 var localPasta = new LocalRootFolder();
                 var pastaCarroEspecifico = await localPasta.GetFolderAsync(stringPathPasta);
                 var arquivoCarroTxt = await localPasta.GetFileAsync(stringPathTxt);
@@ -117,194 +120,225 @@ namespace AppWandre.Views
                 }
                 string txtAnuncio = string.Format("\n{0}- {1}- {2}- {3}com {4} \nPor apenas {5},00.",
                 RetornoDadosCarro[0], RetornoDadosCarro[1], RetornoDadosCarro[2], RetornoDadosCarro[3], contentOpcionais, RetornoDadosCarro[6]);
-                File.AppendAllText(arquivoCarroTxt.Path, txtAnuncio);
+                File.AppendAllText(arquivoCarroTxt.Path, txtAnuncio);*/
+                await DisplayAlert("Erro - Capture a Tela e contacte o desenvolvedor", contentRetornoOpcionais, "OK");
             }
             catch (Exception erro)
             {
                 await DisplayAlert("Erro - Capture a Tela e contacte o desenvolvedor", erro.Message, "OK");
             }
         }
-        private int GetQuantidadeOpcionais(Grid grid)
+        private int GetQuantidadeOpcionais()
         {
-            foreach (CheckBox verificar in grid.Children)
+            if(chkBoxAlarme.IsChecked)
             {
-                if (verificar.GetType().Equals(typeof(CheckBox)))
-                {
-                    if (verificar.IsChecked)
-                    {
-                        switch (verificar.StyleId)
-                        {
-                            case "chkBoxAlarme":
-                                contentRetornoOpcionais += "alarme,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxAirbag":
-                                contentRetornoOpcionais += "AirBag,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxArQuente":
-                                contentRetornoOpcionais += "ar quente,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxABS":
-                                contentRetornoOpcionais += "freio ABS,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxVidro":
-                                contentRetornoOpcionais += "vidros elétricos,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxTravas":
-                                contentRetornoOpcionais += "travas elétricas,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxGPS":
-                                contentRetornoOpcionais += "GPS,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxRadio":
-                                contentRetornoOpcionais += "rádio,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxLigaLeve":
-                                contentRetornoOpcionais += "rodas de liga leve,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxStartStop":
-                                contentRetornoOpcionais += "Start-Stop,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBox4x4":
-                                contentRetornoOpcionais += "4X4,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxMyLink":
-                                contentRetornoOpcionais += "MYLINK,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxTetoSolar":
-                                contentRetornoOpcionais += "teto solar,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxBancoCouro":
-                                contentRetornoOpcionais += "bancos em couro,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxArCondicionado":
-                                contentRetornoOpcionais += "ar condicionado,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxPCdeBordo":
-                                contentRetornoOpcionais += "computador de bordo,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxChavePresencial":
-                                contentRetornoOpcionais += "chave presencial,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxEncostoCabeça":
-                                contentRetornoOpcionais += "encosto de cabeça,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxSensorEstacionamento":
-                                contentRetornoOpcionais += "sensor de estacionamento,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxDesembaçadorTraseiro":
-                                contentRetornoOpcionais += "desembaçador traseiro,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxControleTração":
-                                contentRetornoOpcionais += "controle de tração,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxLimpadorTraseiro":
-                                contentRetornoOpcionais += "limpador traseiro,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxControleVelocidade":
-                                contentRetornoOpcionais += "controle automático da velocidade,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxRetrovisoresEletricos":
-                                contentRetornoOpcionais += "retrovisores elétricos,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxSomVolante":
-                                contentRetornoOpcionais += "comando de som no volante,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxVolMultifuncional":
-                                contentRetornoOpcionais += "volante multifuncional,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxEletroHidraulica":
-                                contentRetornoOpcionais += "direção eletro-hidráulica,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxFotocromico":
-                                contentRetornoOpcionais += "retrovisor fotocrômico,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxCDPlayer":
-                                contentRetornoOpcionais += "CD Player,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxChaveReserva":
-                                contentRetornoOpcionais += "chave reserva,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxManual":
-                                contentRetornoOpcionais += "manual do proprietário,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxHidraulica":
-                                contentRetornoOpcionais += "direção hidráulica,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxEletrica":
-                                contentRetornoOpcionais += "direção elétrica,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxCanivete":
-                                contentRetornoOpcionais += "chave canivete,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxIsofix":
-                                contentRetornoOpcionais += "ISOFIX,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxCamRe":
-                                contentRetornoOpcionais += "câmera de ré,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxSantoAntonio":
-                                contentRetornoOpcionais += "Santo Antônio,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxEstriboLateral":
-                                contentRetornoOpcionais += "estribos laterais,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxMaritma":
-                                contentRetornoOpcionais += "capota marítma,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxDualogic":
-                                contentRetornoOpcionais += "câmbio Dualogic,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxBorboleta":
-                                contentRetornoOpcionais += "câmbio borboleta,";
-                                contadorOpcionais++;
-                                break;
-                            case "chkBoxCVT":
-                                contentRetornoOpcionais += "câmbio CVT,";
-                                contadorOpcionais++;
-                                break;
-                        }
-                    }
-                }
+                contentRetornoOpcionais += "alarme,";
+                contadorOpcionais++;
+            }
+            if(chkBoxAirbag.IsChecked)
+            {
+                contentRetornoOpcionais += "AirBag,";
+                contadorOpcionais++;
+            }
+            if(chkBoxArQuente.IsChecked)
+            {
+                contentRetornoOpcionais += "ar quente,";
+                contadorOpcionais++;
+            }
+            if(chkBoxABS.IsChecked)
+            {
+                contentRetornoOpcionais += "freio ABS,";
+                contadorOpcionais++;
+            }
+            if(chkBoxVidro.IsChecked)
+            {
+                contentRetornoOpcionais += "vidros elétricos,";
+                contadorOpcionais++;
+            }
+            if(chkBoxTravas.IsChecked)
+            {
+                contentRetornoOpcionais += "travas elétricas,";
+                contadorOpcionais++;
+            }
+            if(chkBoxGPS.IsChecked)
+            {
+                contentRetornoOpcionais += "GPS,";
+                contadorOpcionais++;
+            }
+            if(chkBoxRadio.IsChecked)
+            {
+                contentRetornoOpcionais += "rádio,";
+                contadorOpcionais++;
+            }
+            if(chkBoxLigaLeve.IsChecked)
+            {
+                contentRetornoOpcionais += "rodas de liga leve,";
+                contadorOpcionais++;
+            }
+            if(chkBoxStartStop.IsChecked)
+            {
+                contentRetornoOpcionais += "Start-Stop,";
+                contadorOpcionais++;
+            }
+            if(chkBox4x4.IsChecked)
+            {
+                contentRetornoOpcionais += "4X4,";
+                contadorOpcionais++;
+            }
+            if(chkBoxMyLink.IsChecked)
+            {
+                contentRetornoOpcionais += "MYLINK,";
+                contadorOpcionais++;
+            }
+            if(chkBoxTetoSolar.IsChecked)
+            {
+                contentRetornoOpcionais += "teto solar,";
+                contadorOpcionais++;
+            }
+            if(chkBoxBancoCouro.IsChecked)
+            {
+                contentRetornoOpcionais += "bancos em couro,";
+                contadorOpcionais++;
+            }
+            if(chkBoxArCondicionado.IsChecked)
+            {
+                contentRetornoOpcionais += "ar condicionado,";
+                contadorOpcionais++;
+            }
+            if(chkBoxPCdeBordo.IsChecked)
+            {
+                contentRetornoOpcionais += "computador de bordo,";
+                contadorOpcionais++;
+            }
+            if(chkBoxChavePresencial.IsChecked)
+            {
+                contentRetornoOpcionais += "chave presencial,";
+                contadorOpcionais++;
+            }
+            if(chkBoxEncostoCabeça.IsChecked)
+            {
+                contentRetornoOpcionais += "encosto de cabeça,";
+                contadorOpcionais++;
+            }
+            if(chkBoxSensorEstacionamento.IsChecked)
+            {
+                contentRetornoOpcionais += "sensor de estacionamento,";
+                contadorOpcionais++;
+            }
+            if(chkBoxDesembaçadorTraseiro.IsChecked)
+            {
+                contentRetornoOpcionais += "desembaçador traseiro,";
+                contadorOpcionais++;
+            }
+            if(chkBoxControleTração.IsChecked)
+            {
+                contentRetornoOpcionais += "controle de tração,";
+                contadorOpcionais++;
+            }
+            if(chkBoxLimpadorTraseiro.IsChecked)
+            {
+                contentRetornoOpcionais += "limpador traseiro,";
+                contadorOpcionais++;
+            }
+            if(chkBoxControleVelocidade.IsChecked)
+            {
+                contentRetornoOpcionais += "controle automático da velocidade,";
+                contadorOpcionais++;
+            }
+            if(chkBoxRetrovisoresEletricos.IsChecked)
+            {
+                contentRetornoOpcionais += "retrovisores elétricos,";
+                contadorOpcionais++;
+            }
+            if(chkBoxSomVolante.IsChecked)
+            {
+                contentRetornoOpcionais += "comando de som no volante,";
+                contadorOpcionais++;
+            }
+            if(chkBoxVolMultifuncional.IsChecked)
+            {
+                contentRetornoOpcionais += "volante multifuncional,";
+                contadorOpcionais++;
+            }
+            if(chkBoxEletroHidraulica.IsChecked)
+            {
+                contentRetornoOpcionais += "direção eletro-hidráulica,";
+                contadorOpcionais++;
+            }
+            if(chkBoxFotocromico.IsChecked)
+            {
+                contentRetornoOpcionais += "retrovisor fotocrômico,";
+                contadorOpcionais++;
+            }
+            if(chkBoxCDPlayer.IsChecked)
+            {
+                contentRetornoOpcionais += "CD Player,";
+                contadorOpcionais++;
+            }
+            if(chkBoxChaveReserva.IsChecked)
+            {
+                contentRetornoOpcionais += "chave reserva,";
+                contadorOpcionais++;
+            }
+            if(chkBoxManual.IsChecked)
+            {
+                contentRetornoOpcionais += "manual do proprietário,";
+                contadorOpcionais++;
+            }
+            if(chkBoxHidraulica.IsChecked)
+            {
+                contentRetornoOpcionais += "direção hidráulica,";
+                contadorOpcionais++;
+            }
+            if(chkBoxEletrica.IsChecked)
+            {
+                contentRetornoOpcionais += "direção elétrica,";
+                contadorOpcionais++;
+            }
+            if(chkBoxCanivete.IsChecked)
+            {
+                contentRetornoOpcionais += "chave canivete,";
+                contadorOpcionais++;
+            }
+            if(chkBoxIsofix.IsChecked)
+            {
+                contentRetornoOpcionais += "ISOFIX,";
+                contadorOpcionais++;
+            }
+            if(chkBoxCamRe.IsChecked)
+            {
+                contentRetornoOpcionais += "câmera de ré,";
+                contadorOpcionais++;
+            }
+            if(chkBoxSantoAntonio.IsChecked)
+            {
+                contentRetornoOpcionais += "Santo Antônio,";
+                contadorOpcionais++;
+            }
+            if(chkBoxEstriboLateral.IsChecked)
+            {
+                contentRetornoOpcionais += "estribos laterais,";
+                contadorOpcionais++;
+            }
+            if(chkBoxMaritma.IsChecked)
+            {
+                contentRetornoOpcionais += "capota marítma,";
+                contadorOpcionais++;
+            }
+            if(chkBoxDualogic.IsChecked)
+            {
+                contentRetornoOpcionais += "câmbio Dualogic,";
+                contadorOpcionais++;
+            }
+            if(chkBoxBorboleta.IsChecked)
+            {
+                contentRetornoOpcionais += "câmbio borboleta,";
+                contadorOpcionais++;
+            }
+            if(chkBoxCVT.IsChecked)
+            {
+                contentRetornoOpcionais += "câmbio CVT,";
+                contadorOpcionais++;
             }
             return contadorOpcionais;
         }

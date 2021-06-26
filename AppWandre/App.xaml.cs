@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using AppWandre.Views;
+using Xamarin.Forms;
 
 namespace AppWandre
 {
