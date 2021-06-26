@@ -3,118 +3,133 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppWandre.Views.PageOpcionais"
              Title="Opcionais">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="30"></ColumnDefinition>
-            <ColumnDefinition Width="45"></ColumnDefinition>
-            <ColumnDefinition Width="30"></ColumnDefinition>
-            <ColumnDefinition Width="140"></ColumnDefinition>
-            <ColumnDefinition Width="30"></ColumnDefinition>
-            <ColumnDefinition Width="80"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        
-            <StackLayout Grid.Column="0" x:Name="stackLayout01">
-                <CheckBox x:Name="chkBoxAlarme"></CheckBox>
-                <CheckBox x:Name="chkBoxAirbag"></CheckBox>
-                <CheckBox x:Name="chkBoxArQuente"></CheckBox>
-                <CheckBox x:Name="chkBoxABS"></CheckBox>
-                <CheckBox x:Name="chkBoxVidro"></CheckBox>
-                <CheckBox x:Name="chkBoxTravas"></CheckBox>
-                <CheckBox x:Name="chkBoxGPS"></CheckBox>
-                <CheckBox x:Name="chkBoxRadio"></CheckBox>
-                <CheckBox x:Name="chkBoxLigaLeve"></CheckBox>
-                <CheckBox x:Name="chkBoxStartStop"></CheckBox>
-                <CheckBox x:Name="chkBox4x4"></CheckBox>
-                <CheckBox x:Name="chkBoxMyLink"></CheckBox>
-                <CheckBox x:Name="chkBoxTetoSolar"></CheckBox>
-                <CheckBox x:Name="chkBoxBancoCouro"></CheckBox>
-            </StackLayout>
-            <StackLayout Grid.Column="1">
-                <Label Text="Alarme" FontAttributes="Bold" Padding="-5,6,0,0"></Label>
-                <Label Text="Airbag" FontAttributes="Bold" Padding="-5,12,0,0"></Label>
-                <Label Text="Ar quente" FontAttributes="Bold" Padding="-5,2,0,0"></Label>
-                <Label Text="ABS" FontAttributes="Bold" Padding="-5,5,0,0"></Label>
-                <Label Text="Vidro" FontAttributes="Bold" Padding="-5,13,0,0"></Label>
-                <Label Text="Travas" FontAttributes="Bold" Padding="-5,13,0,0"></Label>
-                <Label Text="GPS" FontAttributes="Bold" Padding="-5,13,0,0"></Label>
-                <Label Text="Rádio" FontAttributes="Bold" Padding="-5,11,0,0"></Label>
-                <Label Text="Liga Leve" FontAttributes="Bold" Padding="-5,3,0,0"></Label>
-                <Label Text="Start Stop" FontAttributes="Bold" Padding="-5,-2,0,0"></Label>
-                <Label Text="4X4" FontAttributes="Bold" Padding="-5,4,0,0"></Label>
-                <Label Text="MyLink" FontAttributes="Bold" Padding="-5,12,0,0"></Label>
-                <Label Text="Teto Solar" FontAttributes="Bold" Padding="-5,4,0,0"></Label>
-                <Label Text="Banco Couro" FontAttributes="Bold" Padding="-5,-3,0,0"></Label>
-            </StackLayout>
+        <ScrollView Grid.Row="0" BackgroundColor="Transparent">
+            <Grid x:Name="gridOpcionais">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25"></ColumnDefinition>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition Width="25"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-            <StackLayout Grid.Column="2" x:Name="stackLayout02">
-                <CheckBox x:Name="chkBoxArCondicionado"></CheckBox>
-                <CheckBox x:Name="chkBoxPCdeBordo"></CheckBox>
-                <CheckBox x:Name="chkBoxChavePresencial"></CheckBox>
-                <CheckBox x:Name="chkBoxEncostoCabeça"></CheckBox>
-                <CheckBox x:Name="chkBoxSensorEstacionamento"></CheckBox>
-                <CheckBox x:Name="chkBoxDesembaçadorTraseiro"></CheckBox>
-                <CheckBox x:Name="chkBoxControleTração"></CheckBox>
-                <CheckBox x:Name="chkBoxLimpadorTraseiro"></CheckBox>
-                <CheckBox x:Name="chkBoxControleVelocidade"></CheckBox>
-                <CheckBox x:Name="chkBoxRetrovisoresEletricos"></CheckBox>
-                <CheckBox></CheckBox>
-                <CheckBox></CheckBox>
-                <CheckBox></CheckBox>
-                <CheckBox></CheckBox>
-            </StackLayout>
-            <StackLayout Grid.Column="3">
-                <Label Text="Ar condicionado" FontAttributes="Bold" Padding="-5,6,0,0"></Label>
-                <Label Text="Computador de bordo" FontAttributes="Bold" Padding="-5,12,0,0"></Label>
-                <Label Text="Chave Presencial" FontAttributes="Bold" Padding="-5,12,0,0"></Label>
-                <Label Text="Encosto de Cabeça" FontAttributes="Bold" Padding="-5,12,0,0"></Label>
-                <Label Text="Sensor de Estacionamento" FontAttributes="Bold" Padding="-5,4,0,0"></Label>
-                <Label Text="Desembaçador Traseiro" FontAttributes="Bold" Padding="-5,5,-10,0"></Label>
-                <Label Text="Controle de Tração" FontAttributes="Bold" Padding="-5,12,0,0"></Label>
-                <Label Text="Limpador Traseiro" FontAttributes="Bold" Padding="-5,12,0,0"></Label>
-                <Label Text="Controle de Velocidade" FontAttributes="Bold" Padding="-5,4,0,0"></Label>
-                <Label Text="Retrovisores Elétricos" FontAttributes="Bold" Padding="-5,4,0,0"></Label>
-                <Label Text="Comando de Som no Volante" FontAttributes="Bold" Padding="-5,4,0,0"></Label>
-                <Label Text="Volante Multifuncional" FontAttributes="Bold" Padding="-5,5,0,0"></Label>
-                <Label Text="Volante Multifuncional" FontAttributes="Bold" Padding="-5,12,0,0"></Label>
-                <Label Text="Volante Multifuncional" FontAttributes="Bold" Padding="-5,12,0,0"></Label>
-            </StackLayout>
-        
-            <StackLayout Grid.Column="4" x:Name="stackLayout03">
-                <CheckBox x:Name=""></CheckBox>
-                <CheckBox x:Name=""></CheckBox>
-                <CheckBox x:Name=""></CheckBox>
-                <CheckBox x:Name=""></CheckBox>
-                <CheckBox x:Name=""></CheckBox>
-                <CheckBox x:Name=""></CheckBox>
-                <CheckBox x:Name=""></CheckBox>
-                <CheckBox x:Name=""></CheckBox>
-                <CheckBox x:Name=""></CheckBox>
-                <CheckBox x:Name="chkBox"></CheckBox>
-                <CheckBox></CheckBox>
-                <CheckBox></CheckBox>
-                <CheckBox></CheckBox>
-                <CheckBox></CheckBox>
-            </StackLayout>
-            <StackLayout Grid.Column="5">
-                <Label Text="Ar condicionado" FontAttributes="Bold" Padding="-5,6,0,0"></Label>
-                <Label Text="Computador de bordo" FontAttributes="Bold" Padding="-5,12,0,0"></Label>
-                <Label Text="Chave Presencial" FontAttributes="Bold" Padding="-5,12,0,0"></Label>
-                <Label Text="Encosto de Cabeça" FontAttributes="Bold" Padding="-5,14,0,0"></Label>
-                <Label Text="Sensor de Estacionamento" FontAttributes="Bold" Padding="-5,6,0,0"></Label>
-                <Label Text="Desembaçador Traseiro" FontAttributes="Bold" Padding="-5,5,0,0"></Label>
-                <Label Text="Controle de Tração" FontAttributes="Bold" Padding="-5,13,0,0"></Label>
-                <Label Text="Limpador Traseiro" FontAttributes="Bold" Padding="-5,13,0,0"></Label>
-                <Label Text="Controle de Velocidade" FontAttributes="Bold" Padding="-5,13,0,0"></Label>
-                <Label Text="Retrovisores Elétricos" FontAttributes="Bold" Padding="-5,13,0,0"></Label>
-                <Label Text="Comando de Som no Volante" FontAttributes="Bold" Padding="-5,13,0,0"></Label>
-                <Label Text="Volante Multifuncional" FontAttributes="Bold" Padding="-5,13,0,0"></Label>
-                <Label Text="Volante Multifuncional" FontAttributes="Bold" Padding="-5,13,0,0"></Label>
-                <Label Text="Volante Multifuncional" FontAttributes="Bold" Padding="-5,13,0,0"></Label>
-            </StackLayout>
-        <Button x:Name="btnSalvarOpcionais" Text="SALVAR" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="1" Clicked="BtnSalvarOpcionais_Clicked"></Button>
+                <CheckBox x:Name="chkBoxAlarme" Grid.Row="0" Grid.Column="0"></CheckBox>
+                <CheckBox x:Name="chkBoxAirbag" Grid.Row="1" Grid.Column="0"></CheckBox>
+                <CheckBox x:Name="chkBoxArQuente" Grid.Row="2" Grid.Column="0"></CheckBox>
+                <CheckBox x:Name="chkBoxABS" Grid.Row="3" Grid.Column="0"></CheckBox>
+                <CheckBox x:Name="chkBoxVidro" Grid.Row="4" Grid.Column="0"></CheckBox>
+                <CheckBox x:Name="chkBoxTravas" Grid.Row="5" Grid.Column="0"></CheckBox>
+                <CheckBox x:Name="chkBoxGPS" Grid.Row="6" Grid.Column="0"></CheckBox>
+                <CheckBox x:Name="chkBoxRadio" Grid.Row="7" Grid.Column="0"></CheckBox>
+                <CheckBox x:Name="chkBoxLigaLeve" Grid.Row="8" Grid.Column="0"></CheckBox>
+                <CheckBox x:Name="chkBoxStartStop" Grid.Row="9" Grid.Column="0"></CheckBox>
+                <CheckBox x:Name="chkBox4x4" Grid.Row="10" Grid.Column="0"></CheckBox>
+                <CheckBox x:Name="chkBoxMyLink" Grid.Row="11" Grid.Column="0"></CheckBox>
+                <CheckBox x:Name="chkBoxTetoSolar" Grid.Row="12" Grid.Column="0"></CheckBox>
+                <CheckBox x:Name="chkBoxBancoCouro" Grid.Row="13" Grid.Column="0"></CheckBox>
+                <CheckBox x:Name="chkBoxCDPlayer" Grid.Row="14" Grid.Column="0"></CheckBox>
+                <CheckBox x:Name="chkBoxChaveReserva" Grid.Row="15" Grid.Column="0"></CheckBox>
+                <CheckBox x:Name="chkBoxManual" Grid.Row="16" Grid.Column="0"></CheckBox>
+                <CheckBox x:Name="chkBoxHidraulica" Grid.Row="17" Grid.Column="0"></CheckBox>
+                <CheckBox x:Name="chkBoxEletrica" Grid.Row="18" Grid.Column="0"></CheckBox>
+                <CheckBox x:Name="chkBoxCanivete" Grid.Row="19" Grid.Column="0"></CheckBox>
+                <CheckBox x:Name="chkBoxIsofix" Grid.Row="20" Grid.Column="0"></CheckBox>
+
+                <Label Text="Alarme" FontAttributes="Bold" Grid.Row="0" Grid.Column="1" Padding="0,5,0,0"></Label>
+                <Label Text="Airbag" FontAttributes="Bold" Grid.Row="1" Grid.Column="1" Padding="0,5,0,0"></Label>
+                <Label Text="Ar quente" FontAttributes="Bold" Grid.Row="2" Grid.Column="1" Padding="0,5,0,0"></Label>
+                <Label Text="ABS" FontAttributes="Bold" Grid.Row="3" Grid.Column="1" Padding="0,5,0,0"></Label>
+                <Label Text="Vidro" FontAttributes="Bold" Grid.Row="4" Grid.Column="1" Padding="0,5,0,0"></Label>
+                <Label Text="Travas" FontAttributes="Bold" Grid.Row="5" Grid.Column="1" Padding="0,5,0,0"></Label>
+                <Label Text="GPS" FontAttributes="Bold" Grid.Row="6" Grid.Column="1" Padding="0,5,0,0"></Label>
+                <Label Text="Rádio" FontAttributes="Bold" Grid.Row="7" Grid.Column="1" Padding="0,5,0,0"></Label>
+                <Label Text="Liga Leve" FontAttributes="Bold" Grid.Row="8" Grid.Column="1" Padding="0,5,0,0"></Label>
+                <Label Text="Start Stop" FontAttributes="Bold" Grid.Row="9" Grid.Column="1" Padding="0,5,0,0"></Label>
+                <Label Text="4X4" FontAttributes="Bold" Grid.Row="10" Grid.Column="1" Padding="0,5,0,0"></Label>
+                <Label Text="MyLink" FontAttributes="Bold" Grid.Row="11" Grid.Column="1" Padding="0,5,0,0"></Label>
+                <Label Text="Teto Solar" FontAttributes="Bold" Grid.Row="12" Grid.Column="1" Padding="0,5,0,0"></Label>
+                <Label Text="Banco Couro" FontAttributes="Bold" Grid.Row="13" Grid.Column="1" Padding="0,5,0,0"></Label>
+                <Label Text="CD Player" FontAttributes="Bold" Grid.Row="14" Grid.Column="1" Padding="0,5,0,0"></Label>
+                <Label Text="Chave Reserva" FontAttributes="Bold" Grid.Row="15" Grid.Column="1" Padding="0,5,0,0"></Label>
+                <Label Text="Manual do Proprietário" FontAttributes="Bold" Grid.Row="16" Grid.Column="1" Padding="0,5,0,0"></Label>
+                <Label Text="Direção Hidráulica" FontAttributes="Bold" Grid.Row="17" Grid.Column="1" Padding="0,5,0,0"></Label>
+                <Label Text="Direção Elétrica" FontAttributes="Bold" Grid.Row="18" Grid.Column="1" Padding="0,5,0,0"></Label>
+                <Label Text="Chave Canivete" FontAttributes="Bold" Grid.Row="19" Grid.Column="1" Padding="0,5,0,0"></Label>
+                <Label Text="ISOFIX" FontAttributes="Bold" Grid.Row="20" Grid.Column="1" Padding="0,5,0,0"></Label>
+
+                <CheckBox x:Name="chkBoxArCondicionado" Grid.Row="0" Grid.Column="2"></CheckBox>
+                <CheckBox x:Name="chkBoxPCdeBordo" Grid.Row="1" Grid.Column="2"></CheckBox>
+                <CheckBox x:Name="chkBoxChavePresencial" Grid.Row="2" Grid.Column="2"></CheckBox>
+                <CheckBox x:Name="chkBoxEncostoCabeça" Grid.Row="3" Grid.Column="2"></CheckBox>
+                <CheckBox x:Name="chkBoxSensorEstacionamento" Grid.Row="4" Grid.Column="2"></CheckBox>
+                <CheckBox x:Name="chkBoxDesembaçadorTraseiro" Grid.Row="5" Grid.Column="2"></CheckBox>
+                <CheckBox x:Name="chkBoxControleTração" Grid.Row="6" Grid.Column="2"></CheckBox>
+                <CheckBox x:Name="chkBoxLimpadorTraseiro" Grid.Row="7" Grid.Column="2"></CheckBox>
+                <CheckBox x:Name="chkBoxControleVelocidade" Grid.Row="8" Grid.Column="2"></CheckBox>
+                <CheckBox x:Name="chkBoxRetrovisoresEletricos" Grid.Row="9" Grid.Column="2"></CheckBox>
+                <CheckBox x:Name="chkBoxSomVolante" Grid.Row="10" Grid.Column="2"></CheckBox>
+                <CheckBox x:Name="chkBoxVolMultifuncional" Grid.Row="11" Grid.Column="2"></CheckBox>
+                <CheckBox x:Name="chkBoxEletroHidraulica" Grid.Row="12" Grid.Column="2"></CheckBox>
+                <CheckBox x:Name="chkBoxFotocromico" Grid.Row="13" Grid.Column="2"></CheckBox>
+                <CheckBox x:Name="chkBoxCamRe" Grid.Row="14" Grid.Column="2"></CheckBox>
+                <CheckBox x:Name="chkBoxSantoAntonio" Grid.Row="15" Grid.Column="2"></CheckBox>
+                <CheckBox x:Name="chkBoxEstriboLateral" Grid.Row="16" Grid.Column="2"></CheckBox>
+                <CheckBox x:Name="chkBoxMaritma" Grid.Row="17" Grid.Column="2"></CheckBox>
+                <CheckBox x:Name="chkBoxDualogic" Grid.Row="18" Grid.Column="2"></CheckBox>
+                <CheckBox x:Name="chkBoxBorboleta" Grid.Row="19" Grid.Column="2"></CheckBox>
+                <CheckBox x:Name="chkBoxCVT" Grid.Row="20" Grid.Column="2"></CheckBox>
+
+                <Label Text="Ar condicionado" FontAttributes="Bold" Grid.Row="0" Grid.Column="3" Padding="0,5,0,0"></Label>
+                <Label Text="Computador de bordo" FontAttributes="Bold" Grid.Row="1" Grid.Column="3" Padding="0,5,0,0"></Label>
+                <Label Text="Chave Presencial" FontAttributes="Bold" Grid.Row="2" Grid.Column="3" Padding="0,5,0,0"></Label>
+                <Label Text="Encosto de Cabeça" FontAttributes="Bold" Grid.Row="3" Grid.Column="3" Padding="0,5,0,0"></Label>
+                <Label Text="Sensor de Estacionamento" FontAttributes="Bold" Grid.Row="4" Grid.Column="3" Padding="0,5,0,0"></Label>
+                <Label Text="Desembaçador Traseiro" FontAttributes="Bold" Grid.Row="5" Grid.Column="3" Padding="0,5,0,0"></Label>
+                <Label Text="Controle de Tração" FontAttributes="Bold" Grid.Row="6" Grid.Column="3" Padding="0,5,0,0"></Label>
+                <Label Text="Limpador Traseiro" FontAttributes="Bold" Grid.Row="7" Grid.Column="3" Padding="0,5,0,0"></Label>
+                <Label Text="Controle de Velocidade" FontAttributes="Bold" Grid.Row="8" Grid.Column="3" Padding="0,5,0,0"></Label>
+                <Label Text="Retrovisores Elétricos" FontAttributes="Bold" Grid.Row="9" Grid.Column="3" Padding="0,5,0,0"></Label>
+                <Label Text="Comando de Som no Volante" FontAttributes="Bold" Grid.Row="10" Grid.Column="3" Padding="0,5,0,0"></Label>
+                <Label Text="Volante Multifuncional" FontAttributes="Bold" Grid.Row="11" Grid.Column="3" Padding="0,5,0,0"></Label>
+                <Label Text="Direção Eletro-hidráulica" FontAttributes="Bold" Grid.Row="12" Grid.Column="3" Padding="0,5,0,0"></Label>
+                <Label Text="Retrovisor Fotocrômico" FontAttributes="Bold" Grid.Row="13" Grid.Column="3" Padding="0,5,0,0"></Label>
+                <Label Text="Câmera de Ré" FontAttributes="Bold" Grid.Row="14" Grid.Column="3" Padding="0,5,0,0"></Label>
+                <Label Text="Santo Antônio" FontAttributes="Bold" Grid.Row="15" Grid.Column="3" Padding="0,5,0,0"></Label>
+                <Label Text="Estribos Laterais" FontAttributes="Bold" Grid.Row="16" Grid.Column="3" Padding="0,5,0,0"></Label>
+                <Label Text="Caporta Marítma" FontAttributes="Bold" Grid.Row="17" Grid.Column="3" Padding="0,5,0,0"></Label>
+                <Label Text="Câmbio Dualogic" FontAttributes="Bold" Grid.Row="18" Grid.Column="3" Padding="0,5,0,0"></Label>
+                <Label Text="Câmbio Borboleta" FontAttributes="Bold" Grid.Row="19" Grid.Column="3" Padding="0,5,0,0"></Label>
+                <Label Text="Câmbio CVT" FontAttributes="Bold" Grid.Row="20" Grid.Column="3" Padding="0,5,0,0"></Label>
+            </Grid>
+        </ScrollView>
+        <Button x:Name="btnSalvarOpcionais" Text="SALVAR" Grid.Row="1" Clicked="BtnSalvarOpcionais_Clicked"></Button>
     </Grid>
 </ContentPage>

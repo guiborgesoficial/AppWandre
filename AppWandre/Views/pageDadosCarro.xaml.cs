@@ -2,10 +2,7 @@
 using PCLExt.FileStorage;
 using PCLExt.FileStorage.Folders;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -19,7 +16,7 @@ namespace AppWandre.Views
         {
             InitializeComponent();
         }
-       
+
         private async void BtnSalvar_Clicked(object sender, EventArgs e)
         {
             await GerarPlanilha();
@@ -54,8 +51,8 @@ namespace AppWandre.Views
 
                         for (int linha = 2; linha < 20; linha++)
                         {
-                           
-                            if (int.Parse(entryKM.Text.Replace(".","")) < 80000)
+
+                            if (int.Parse(entryKM.Text.Replace(".", "")) < 80000)
                             {
                                 KM = entryKM.Text + "\nKM";
                             }
@@ -76,11 +73,11 @@ namespace AppWandre.Views
                                 loja = "l2";
                             }
 
-                            var valores = new String[] {};
+                            var valores = new String[] { };
 
                             if (pickerCambio.SelectedIndex == 1)
                             {
-                                if(pickerCompleto.SelectedIndex == 1)
+                                if (pickerCompleto.SelectedIndex == 1)
                                 {
                                     valores = new String[] {entryModelo.Text.ToUpper(), entryMotor.Text + "\t-\t" +
                                     entryDescricao.Text.ToUpper() + "\t-\t" + pickerCambio.SelectedItem.ToString() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text + "\t-\t" + KM,
@@ -162,7 +159,7 @@ namespace AppWandre.Views
             if (pickerMarca.SelectedIndex == -1 || entryModelo.Text == string.Empty || entryDescricao.Text == string.Empty
                || entryAno.Text == string.Empty || entryMotor.Text == string.Empty ||
                pickerTipoMotor.SelectedIndex == -1 || pickerCambio.SelectedIndex == -1 ||
-               entryKM.Text == string.Empty || entryValor.Text == string.Empty || pickerCompleto.SelectedIndex == -1 
+               entryKM.Text == string.Empty || entryValor.Text == string.Empty || pickerCompleto.SelectedIndex == -1
                || entryPlaca.Text == string.Empty
             )
             {

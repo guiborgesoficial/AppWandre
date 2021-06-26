@@ -33,9 +33,9 @@
             </Picker>
 
             <Entry x:Name="entryModelo" Placeholder="Modelo"></Entry>
-            <Entry x:Name="entryDescricao" Placeholder="Descrição"></Entry>
+            <Entry x:Name="entryDescricao" Placeholder="Descrição - ex: LTZ IMOTION"></Entry>
             <Entry x:Name="entryAno" Placeholder="Ano" Keyboard="Numeric"></Entry>
-            <Entry x:Name="entryMotor" Placeholder="Motor" Keyboard="Numeric"></Entry>
+            <Entry x:Name="entryMotor" Placeholder="Motor - ex: 2.0" Keyboard="Numeric"></Entry>
             <Picker x:Name="pickerTipoMotor" Title="Tipo do Motor">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">

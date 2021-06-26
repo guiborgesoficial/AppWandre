@@ -21,6 +21,7 @@ namespace AppWandre.Views
         }
         private async void BtnSalvarOpcionais_Clicked(object sender, EventArgs e)
         {
+            contentRetornoOpcionais = string.Empty;
             await GravarOpcionais();
             PageCamera abrirCamera = new PageCamera();
             abrirCamera.stringPath = stringPathPasta;
@@ -34,8 +35,7 @@ namespace AppWandre.Views
                 var localPasta = new LocalRootFolder();
                 var pastaCarroEspecifico = await localPasta.GetFolderAsync(stringPathPasta);
                 var arquivoCarroTxt = await localPasta.GetFileAsync(stringPathTxt);
-                GetQuantidadeOpcionais(stackLayout01);
-                GetQuantidadeOpcionais(stackLayout02);
+                GetQuantidadeOpcionais(gridOpcionais);
                 string[] RetornoDadosCarro = File.ReadAllLines(stringPathTxt);
                 string[] RetornoOpcionais = contentRetornoOpcionais.Split(',');
                 string contentOpcionais = string.Empty;
@@ -124,22 +124,22 @@ namespace AppWandre.Views
                 await DisplayAlert("Erro - Capture a Tela e contacte o desenvolvedor", erro.Message, "OK");
             }
         }
-        private int GetQuantidadeOpcionais(StackLayout stack)
+        private int GetQuantidadeOpcionais(Grid grid)
         {
-            foreach (CheckBox verificar in stack.Children)
+            foreach (CheckBox verificar in grid.Children)
             {
                 if (verificar.GetType().Equals(typeof(CheckBox)))
                 {
                     if (verificar.IsChecked)
                     {
-                        switch(verificar.StyleId)
+                        switch (verificar.StyleId)
                         {
                             case "chkBoxAlarme":
                                 contentRetornoOpcionais += "alarme,";
                                 contadorOpcionais++;
                                 break;
                             case "chkBoxAirbag":
-                                contentRetornoOpcionais += "Air Bag,";
+                                contentRetornoOpcionais += "AirBag,";
                                 contadorOpcionais++;
                                 break;
                             case "chkBoxArQuente":
@@ -156,13 +156,14 @@ namespace AppWandre.Views
                                 break;
                             case "chkBoxTravas":
                                 contentRetornoOpcionais += "travas elétricas,";
+                                contadorOpcionais++;
                                 break;
                             case "chkBoxGPS":
                                 contentRetornoOpcionais += "GPS,";
                                 contadorOpcionais++;
                                 break;
                             case "chkBoxRadio":
-                                contentRetornoOpcionais += "Rádio,";
+                                contentRetornoOpcionais += "rádio,";
                                 contadorOpcionais++;
                                 break;
                             case "chkBoxLigaLeve":
@@ -171,6 +172,22 @@ namespace AppWandre.Views
                                 break;
                             case "chkBoxStartStop":
                                 contentRetornoOpcionais += "Start-Stop,";
+                                contadorOpcionais++;
+                                break;
+                            case "chkBox4x4":
+                                contentRetornoOpcionais += "4X4,";
+                                contadorOpcionais++;
+                                break;
+                            case "chkBoxMyLink":
+                                contentRetornoOpcionais += "MYLINK,";
+                                contadorOpcionais++;
+                                break;
+                            case "chkBoxTetoSolar":
+                                contentRetornoOpcionais += "teto solar,";
+                                contadorOpcionais++;
+                                break;
+                            case "chkBoxBancoCouro":
+                                contentRetornoOpcionais += "bancos em couro,";
                                 contadorOpcionais++;
                                 break;
                             case "chkBoxArCondicionado":
@@ -213,11 +230,83 @@ namespace AppWandre.Views
                                 contentRetornoOpcionais += "retrovisores elétricos,";
                                 contadorOpcionais++;
                                 break;
+                            case "chkBoxSomVolante":
+                                contentRetornoOpcionais += "comando de som no volante,";
+                                contadorOpcionais++;
+                                break;
+                            case "chkBoxVolMultifuncional":
+                                contentRetornoOpcionais += "volante multifuncional,";
+                                contadorOpcionais++;
+                                break;
+                            case "chkBoxEletroHidraulica":
+                                contentRetornoOpcionais += "direção eletro-hidráulica,";
+                                contadorOpcionais++;
+                                break;
+                            case "chkBoxFotocromico":
+                                contentRetornoOpcionais += "retrovisor fotocrômico,";
+                                contadorOpcionais++;
+                                break;
+                            case "chkBoxCDPlayer":
+                                contentRetornoOpcionais += "CD Player,";
+                                contadorOpcionais++;
+                                break;
+                            case "chkBoxChaveReserva":
+                                contentRetornoOpcionais += "chave reserva,";
+                                contadorOpcionais++;
+                                break;
+                            case "chkBoxManual":
+                                contentRetornoOpcionais += "manual do proprietário,";
+                                contadorOpcionais++;
+                                break;
+                            case "chkBoxHidraulica":
+                                contentRetornoOpcionais += "direção hidráulica,";
+                                contadorOpcionais++;
+                                break;
+                            case "chkBoxEletrica":
+                                contentRetornoOpcionais += "direção elétrica,";
+                                contadorOpcionais++;
+                                break;
+                            case "chkBoxCanivete":
+                                contentRetornoOpcionais += "chave canivete,";
+                                contadorOpcionais++;
+                                break;
+                            case "chkBoxIsofix":
+                                contentRetornoOpcionais += "ISOFIX,";
+                                contadorOpcionais++;
+                                break;
+                            case "chkBoxCamRe":
+                                contentRetornoOpcionais += "câmera de ré,";
+                                contadorOpcionais++;
+                                break;
+                            case "chkBoxSantoAntonio":
+                                contentRetornoOpcionais += "Santo Antônio,";
+                                contadorOpcionais++;
+                                break;
+                            case "chkBoxEstriboLateral":
+                                contentRetornoOpcionais += "estribos laterais,";
+                                contadorOpcionais++;
+                                break;
+                            case "chkBoxMaritma":
+                                contentRetornoOpcionais += "capota marítma,";
+                                contadorOpcionais++;
+                                break;
+                            case "chkBoxDualogic":
+                                contentRetornoOpcionais += "câmbio Dualogic,";
+                                contadorOpcionais++;
+                                break;
+                            case "chkBoxBorboleta":
+                                contentRetornoOpcionais += "câmbio borboleta,";
+                                contadorOpcionais++;
+                                break;
+                            case "chkBoxCVT":
+                                contentRetornoOpcionais += "câmbio CVT,";
+                                contadorOpcionais++;
+                                break;
                         }
                     }
                 }
             }
-                return contadorOpcionais;
+            return contadorOpcionais;
         }
     }
 }

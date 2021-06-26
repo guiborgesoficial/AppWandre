@@ -45,11 +45,11 @@ namespace AppWandre.Views
                 var pastaFotosCruas = pastaCarro.CreateFolder("fotos_cruas", CreationCollisionOption.OpenIfExists);
                 var arquivo = pastaFotosCruas.CreateFile("0" + contadorFotos + ".jpeg", CreationCollisionOption.ReplaceExisting);
 
-                Android.Graphics.Bitmap bitmapCamera = BitmapFactory.DecodeByteArray(universalByteArrayFoto , 0, universalByteArrayFoto.Length);
+                Android.Graphics.Bitmap bitmapCamera = BitmapFactory.DecodeByteArray(universalByteArrayFoto, 0, universalByteArrayFoto.Length);
                 var bitmapRotacionado = RotacionarBitmap(90, bitmapCamera);
 
                 MemoryStream stream = new MemoryStream();
-                bitmapRotacionado.Compress(Android.Graphics.Bitmap.CompressFormat.Jpeg,100, stream);
+                bitmapRotacionado.Compress(Android.Graphics.Bitmap.CompressFormat.Jpeg, 100, stream);
                 byte[] byteArrayRotacionado = stream.ToArray();
                 File.WriteAllBytes(arquivo.Path, byteArrayRotacionado);
 

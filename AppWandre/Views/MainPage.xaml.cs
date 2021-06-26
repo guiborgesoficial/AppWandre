@@ -5,11 +5,9 @@ using PCLExt.FileStorage.Folders;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -23,7 +21,8 @@ namespace AppWandre
         public MainPage()
         {
             InitializeComponent();
-            ConsultandoCarros();
+            listviewCarros.BeginRefresh();
+            listviewCarros.EndRefresh();
         }
 
         private void BtnAdicionarCarro_Clicked(object sender, EventArgs e)
@@ -51,9 +50,9 @@ namespace AppWandre
                     ObslistaCarros.Add(new ListaCarros() { Name = listaPastas[i].Name, Path = listaPastas[i].Path, Imagem = imagem.Path });
                 }
             }
-            catch(Exception erro)
+            catch (Exception erro)
             {
-                if(erro.Message.Contains("not exist"))
+                if (erro.Message.Contains("not exist"))
                 {
 
                 }
@@ -80,7 +79,7 @@ namespace AppWandre
             var pastaCarros = localPasta.GetFolder("Carros");
             var pastaCarrosCompactados = pastaCarros.CreateFolder("CarrosCompactados", CreationCollisionOption.OpenIfExists);
 
-            if(File.Exists(pastaCarrosCompactados.Path + @"/" + item.Name + ".zip"))
+            if (File.Exists(pastaCarrosCompactados.Path + @"/" + item.Name + ".zip"))
             {
                 try
                 {
@@ -114,7 +113,7 @@ namespace AppWandre
         }
         public async void ListviewCarros_Refreshing(object sender, EventArgs e)
         {
-            if(string.IsNullOrEmpty(searchBarCarros.Text))
+            if (string.IsNullOrEmpty(searchBarCarros.Text))
             {
                 await ConsultandoCarros();
                 listviewCarros.EndRefresh();
