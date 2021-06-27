@@ -159,7 +159,7 @@ namespace AppWandre.Views
         }
         private bool VerificandoPreenchimentoFormulario()
         {
-            var regexTratamentoInput = new Regex("^[a-zA-Z0-9-]*$");
+            var regexTratamentoInput = new Regex(@"^[a-zA-Z0-9-.\s]+$");
             if (pickerMarca.SelectedIndex == -1 || entryModelo.Text == string.Empty || entryDescricao.Text == string.Empty
                || entryAno.Text == string.Empty || entryMotor.Text == string.Empty ||
                pickerTipoMotor.SelectedIndex == -1 || pickerCambio.SelectedIndex == -1 ||

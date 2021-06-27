@@ -4,6 +4,7 @@
              x:Class="AppWandre.Views.PageCamera"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
              >
         <Grid>
             <Grid.RowDefinitions>
