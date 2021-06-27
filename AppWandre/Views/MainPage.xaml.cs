@@ -22,7 +22,6 @@ namespace AppWandre
         {
             InitializeComponent();
             listviewCarros.BeginRefresh();
-            listviewCarros.EndRefresh();
         }
 
         private void BtnAdicionarCarro_Clicked(object sender, EventArgs e)

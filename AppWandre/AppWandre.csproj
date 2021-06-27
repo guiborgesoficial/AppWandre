@@ -13,7 +13,6 @@
   <ItemGroup>
     <PackageReference Include="EPPlus" Version="5.7.0" />
     <PackageReference Include="PCLExt.FileStorage" Version="1.4.1.1" />
-    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
     <PackageReference Include="System.ObjectModel" Version="4.3.0" />
     <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="1.1.0" />

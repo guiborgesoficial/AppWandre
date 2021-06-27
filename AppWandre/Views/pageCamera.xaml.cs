@@ -58,7 +58,7 @@ namespace AppWandre.Views
 
                 if(contadorFotos == 10)
                 {
-                    DisplayActionSheet("Sucesso", "OK", "Fotos amarzenadas com sucesso. Voltando para a página inicial...");
+                    DisplayActionSheet("Sucesso", "OK", "", "Fotos amarzenadas com sucesso. Voltando para a página inicial...");
                     Navigation.PopToRootAsync();
                 }
             }

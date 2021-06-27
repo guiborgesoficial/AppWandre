@@ -68,9 +68,6 @@
     <PackageReference Include="PCLExt.FileStorage">
       <Version>1.4.1.1</Version>
     </PackageReference>
-    <PackageReference Include="System.Drawing.Common">
-      <Version>5.0.2</Version>
-    </PackageReference>
     <PackageReference Include="Xamarin.CommunityToolkit">
       <Version>1.1.0</Version>
     </PackageReference>

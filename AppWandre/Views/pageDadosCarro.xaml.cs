@@ -1,9 +1,7 @@
-﻿using AppWandre.Classes;
-using OfficeOpenXml;
+﻿using OfficeOpenXml;
 using PCLExt.FileStorage;
 using PCLExt.FileStorage.Folders;
 using System;
-using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -172,9 +170,7 @@ namespace AppWandre.Views
                 DisplayAlert("Campos Obrigatórios", "Preencha todos os campos!", "OK");
                 return false;
             }
-            else if(regexTratamentoInput.IsMatch(entryModelo.Text) || regexTratamentoInput.IsMatch(entryDescricao.Text) || regexTratamentoInput.IsMatch(entryAno.Text) ||
-                    regexTratamentoInput.IsMatch(entryMotor.Text) || regexTratamentoInput.IsMatch(entryKM.Text) || regexTratamentoInput.IsMatch(entryValor.Text) ||
-                    regexTratamentoInput.IsMatch(entryPlaca.Text))
+            else if(!regexTratamentoInput.IsMatch(entryModelo.Text) || !regexTratamentoInput.IsMatch(entryDescricao.Text) || !regexTratamentoInput.IsMatch(entryPlaca.Text))
             {
                 DisplayAlert("Campos incorretos", "Os campos não admitem caracteres especiais. Apenas hífen (-) e ponto (.) são permitidos.", "OK");
                 return false;
