@@ -23,22 +23,22 @@ namespace AppWandre.Views
         {
             contentRetornoOpcionais = string.Empty;
             await GravarOpcionais();
-            PageCamera abrirCamera = new PageCamera();
-            abrirCamera.stringPath = stringPathPasta;
-            await Navigation.PushModalAsync(abrirCamera);
+            PageCamera abrirCamera = new PageCamera
+            {
+                stringPath = stringPathPasta
+            };
+            await Navigation.PushAsync(abrirCamera);
         }
         private async Task GravarOpcionais()
         {
             try
             {
                 contadorOpcionais = 0;
-
-                GetQuantidadeOpcionais();
-                /*
+                
                 var localPasta = new LocalRootFolder();
                 var pastaCarroEspecifico = await localPasta.GetFolderAsync(stringPathPasta);
                 var arquivoCarroTxt = await localPasta.GetFileAsync(stringPathTxt);
-                GetQuantidadeOpcionais(gridOpcionais);
+                GetQuantidadeOpcionais();
                 string[] RetornoDadosCarro = File.ReadAllLines(stringPathTxt);
                 string[] RetornoOpcionais = contentRetornoOpcionais.Split(',');
                 string contentOpcionais = string.Empty;
@@ -49,8 +49,8 @@ namespace AppWandre.Views
                     {
                         if (contentRetornoOpcionais.Contains("vidros") && contentRetornoOpcionais.Contains("travas"))
                         {
-                            int indexTravas = Array.IndexOf(RetornoOpcionais, "travas");
-                            int indexVidros = Array.IndexOf(RetornoOpcionais, "vidros");
+                            int indexTravas = Array.IndexOf(RetornoOpcionais, "travas elétricas");
+                            int indexVidros = Array.IndexOf(RetornoOpcionais, "vidros elétricos");
 
                             if (i < contadorOpcionais - 1)
                             {
@@ -65,7 +65,7 @@ namespace AppWandre.Views
                             }
                             else
                             {
-                                contentOpcionais += string.Format("{0}, {1} e {2} elétricas com {3} KM. ", RetornoOpcionais[i],
+                                contentOpcionais += string.Format("{0}, {1} e {2} com {3} KM. ", RetornoOpcionais[i],
                                 RetornoOpcionais[indexVidros], RetornoOpcionais[indexTravas], RetornoDadosCarro[5]);
                             }
                         }
@@ -85,8 +85,8 @@ namespace AppWandre.Views
                     {
                         if (contentRetornoOpcionais.Contains("vidros") && contentRetornoOpcionais.Contains("travas"))
                         {
-                            int indexTravas = Array.IndexOf(RetornoOpcionais, "travas");
-                            int indexVidros = Array.IndexOf(RetornoOpcionais, "vidros");
+                            int indexTravas = Array.IndexOf(RetornoOpcionais, "travas elétricas");
+                            int indexVidros = Array.IndexOf(RetornoOpcionais, "vidros vidros elétricos");
 
                             if (i < contadorOpcionais - 1)
                             {
@@ -101,7 +101,7 @@ namespace AppWandre.Views
                             }
                             else
                             {
-                                contentOpcionais += string.Format("{0}, {1} e {2} elétricas. ", RetornoOpcionais[i],
+                                contentOpcionais += string.Format("{0}, {1} e {2}. ", RetornoOpcionais[i],
                                 RetornoOpcionais[indexVidros], RetornoOpcionais[indexTravas]);
                             }
                         }
@@ -120,8 +120,7 @@ namespace AppWandre.Views
                 }
                 string txtAnuncio = string.Format("\n{0}- {1}- {2}- {3}com {4} \nPor apenas {5},00.",
                 RetornoDadosCarro[0], RetornoDadosCarro[1], RetornoDadosCarro[2], RetornoDadosCarro[3], contentOpcionais, RetornoDadosCarro[6]);
-                File.AppendAllText(arquivoCarroTxt.Path, txtAnuncio);*/
-                await DisplayAlert("Erro - Capture a Tela e contacte o desenvolvedor", contentRetornoOpcionais, "OK");
+                File.AppendAllText(arquivoCarroTxt.Path, txtAnuncio);
             }
             catch (Exception erro)
             {

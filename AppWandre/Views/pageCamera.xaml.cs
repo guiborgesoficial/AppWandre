@@ -55,6 +55,12 @@ namespace AppWandre.Views
 
                 contadorFotos++;
                 btnCapturarFoto.Text = contadorFotos.ToString();
+
+                if(contadorFotos == 10)
+                {
+                    DisplayActionSheet("Sucesso", "OK", "Fotos amarzenadas com sucesso. Voltando para a página inicial...");
+                    Navigation.PopToRootAsync();
+                }
             }
         }
         public Android.Graphics.Bitmap RotacionarBitmap(int angulo, Android.Graphics.Bitmap bitmap)

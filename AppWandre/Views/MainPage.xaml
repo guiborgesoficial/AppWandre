@@ -18,10 +18,9 @@
 
             <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Padding="5,5,5,0">
                 <Frame BackgroundColor="LightGray" CornerRadius="45" IsClippedToBounds="true" Padding="-9">
-                    <SearchBar x:Name="searchBarCarros"  Placeholder="Procurar" BackgroundColor="LightGray" TextChanged="searchBarCarros_TextChanged"></SearchBar>
+                    <SearchBar x:Name="searchBarCarros"  Placeholder="Procurar" BackgroundColor="LightGray" TextChanged="SearchBarCarros_TextChanged"></SearchBar>
                 </Frame>
             </StackLayout>
-
             <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2">
                 <ListView x:Name="listviewCarros" 
                           RowHeight="80" BackgroundColor="White" 

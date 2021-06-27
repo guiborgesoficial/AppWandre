@@ -16,7 +16,7 @@ namespace AppWandre
 {
     public partial class MainPage : ContentPage
     {
-        private ObservableCollection<ListaCarros> ObslistaCarros = new ObservableCollection<ListaCarros>();
+        private readonly ObservableCollection<ListaCarros> ObslistaCarros = new ObservableCollection<ListaCarros>();
 
         public MainPage()
         {
@@ -123,7 +123,7 @@ namespace AppWandre
                 listviewCarros.EndRefresh();
             }
         }
-        private void searchBarCarros_TextChanged(object sender, TextChangedEventArgs e)
+        private void SearchBarCarros_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(e.NewTextValue.ToLower()))
             {

@@ -1,5 +1,4 @@
-﻿using AppWandre.Views;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace AppWandre
 {
@@ -8,7 +7,6 @@ namespace AppWandre
         public App()
         {
             InitializeComponent();
-
             var página = new NavigationPage(new MainPage());
             MainPage = página;
         }

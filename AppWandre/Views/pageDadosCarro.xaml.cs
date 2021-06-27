@@ -1,8 +1,11 @@
-﻿using OfficeOpenXml;
+﻿using AppWandre.Classes;
+using OfficeOpenXml;
 using PCLExt.FileStorage;
 using PCLExt.FileStorage.Folders;
 using System;
+using System.Globalization;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -141,21 +144,24 @@ namespace AppWandre.Views
                         //File.WriteAllBytes(arquivoCSV.Path, excelPackage.GetAsByteArray());
                         File.WriteAllText(arquivoTXT.Path, descricaoCarroContent);
 
-                        PageOpcionais abrirOpicionais = new PageOpcionais();
-                        abrirOpicionais.stringPathPasta = pastaCarroEspecifico.Path;
-                        abrirOpicionais.stringPathTxt = arquivoTXT.Path;
-                        abrirOpicionais.contentDadosCarro = descricaoCarroContent;
-                        await Navigation.PushModalAsync(abrirOpicionais);
+                        PageOpcionais abrirOpicionais = new PageOpcionais
+                        {
+                            stringPathPasta = pastaCarroEspecifico.Path,
+                            stringPathTxt = arquivoTXT.Path,
+                            contentDadosCarro = descricaoCarroContent
+                        };
+                        await Navigation.PushAsync(abrirOpicionais);
                     }
                 }
                 catch (Exception erro)
                 {
-                    await DisplayAlert("Erro", "Erro ao gerar planilha" + erro, "Ok");
+                    await DisplayAlert("Erro", "Erro ao gerar planilha. Tire um print e contacte o desenvolvedor" + erro, "Ok");
                 }
             }
         }
         private bool VerificandoPreenchimentoFormulario()
         {
+            var regexTratamentoInput = new Regex("^[a-zA-Z0-9-]*$");
             if (pickerMarca.SelectedIndex == -1 || entryModelo.Text == string.Empty || entryDescricao.Text == string.Empty
                || entryAno.Text == string.Empty || entryMotor.Text == string.Empty ||
                pickerTipoMotor.SelectedIndex == -1 || pickerCambio.SelectedIndex == -1 ||
@@ -164,6 +170,13 @@ namespace AppWandre.Views
             )
             {
                 DisplayAlert("Campos Obrigatórios", "Preencha todos os campos!", "OK");
+                return false;
+            }
+            else if(regexTratamentoInput.IsMatch(entryModelo.Text) || regexTratamentoInput.IsMatch(entryDescricao.Text) || regexTratamentoInput.IsMatch(entryAno.Text) ||
+                    regexTratamentoInput.IsMatch(entryMotor.Text) || regexTratamentoInput.IsMatch(entryKM.Text) || regexTratamentoInput.IsMatch(entryValor.Text) ||
+                    regexTratamentoInput.IsMatch(entryPlaca.Text))
+            {
+                DisplayAlert("Campos incorretos", "Os campos não admitem caracteres especiais. Apenas hífen (-) e ponto (.) são permitidos.", "OK");
                 return false;
             }
             else

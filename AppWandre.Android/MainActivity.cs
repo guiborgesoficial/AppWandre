@@ -15,6 +15,13 @@ namespace AppWandre.Droid
 
             base.OnCreate(savedInstanceState);
 
+            string cultureName = "en-US";
+            var locale = new Java.Util.Locale(cultureName);
+            Java.Util.Locale.Default = locale;
+
+            var configg = new Android.Content.Res.Configuration { Locale = locale };
+            BaseContext.Resources.UpdateConfiguration(configg, BaseContext.Resources.DisplayMetrics);
+
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());

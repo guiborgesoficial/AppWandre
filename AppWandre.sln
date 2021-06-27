@@ -7,7 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppWandre.Android", "AppWan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppWandre.iOS", "AppWandre.iOS\AppWandre.iOS.csproj", "{6ADEBF86-9454-425A-AA25-543778D4910D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppWandre", "AppWandre\AppWandre.csproj", "{C5F3A078-6962-4A90-B2BC-CD6054B55CC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppWandre", "AppWandre\AppWandre.csproj", "{C5F3A078-6962-4A90-B2BC-CD6054B55CC5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5EC156E9-F96E-4F45-B755-5E9B36A9667F}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
