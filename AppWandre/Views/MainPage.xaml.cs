@@ -17,29 +17,32 @@ namespace AppWandre
     public partial class MainPage : ContentPage
     {
         private readonly ObservableCollection<ListaCarros> ObslistaCarros = new ObservableCollection<ListaCarros>();
-
+        
         public MainPage()
         {
             InitializeComponent();
             listviewCarros.BeginRefresh();
+            listviewCarros.EndRefresh();
         }
 
         private void BtnAdicionarCarro_Clicked(object sender, EventArgs e)
         {
-            ObslistaCarros.Clear();
+            btnAdicionarCarro.IsEnabled = false;    
             Navigation.PushAsync(new PageDadosCarro());
+            btnAdicionarCarro.IsEnabled = true;
         }
         public async Task ConsultandoCarros()
         {
             ObslistaCarros.Clear();
-            var localPasta = new LocalRootFolder();
-            var pastaCarros = await localPasta.CreateFolderAsync("Carros", CreationCollisionOption.OpenIfExists);
-
-            List<IFolder> listaPastas = new List<IFolder>();
-            listaPastas.AddRange(await pastaCarros.GetFoldersAsync());
-
+            
             try
             {
+                var localPasta = new LocalRootFolder();
+                var pastaCarros = await localPasta.GetFolderAsync("Carros");
+
+                List<IFolder> listaPastas = new List<IFolder>();
+                listaPastas.AddRange(await pastaCarros.GetFoldersAsync());
+
                 for (int i = 0; i < listaPastas.Count; i++)
                 {
                     var pastaCarroInterna = await pastaCarros.GetFolderAsync(listaPastas[i].Name);
@@ -61,6 +64,7 @@ namespace AppWandre
                 }
             }
             listviewCarros.ItemsSource = ObslistaCarros;
+            listviewCarros.EndRefresh();
         }
         public void DeletarItem(object sender, EventArgs e)
         {
@@ -115,7 +119,6 @@ namespace AppWandre
             if (string.IsNullOrEmpty(searchBarCarros.Text))
             {
                 await ConsultandoCarros();
-                listviewCarros.EndRefresh();
             }
             else
             {

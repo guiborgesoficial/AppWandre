@@ -20,6 +20,7 @@ namespace AppWandre.Views
 
         private async void BtnSalvar_Clicked(object sender, EventArgs e)
         {
+            btnSalvar.IsEnabled = false;
             await GerarPlanilha();
         }
         private async Task GerarPlanilha()
@@ -55,7 +56,14 @@ namespace AppWandre.Views
 
                             if (int.Parse(entryKM.Text.Replace(".", "")) < 80000)
                             {
-                                KM = entryKM.Text + "\nKM";
+                                if(int.Parse(entryKM.Text.Replace(".","")) == 0)
+                                {
+                                    KM = " - ZERO KM";
+                                }
+                                else
+                                {
+                                    KM = "- " + entryKM.Text + "\nKM";
+                                }
                             }
                             else
                             {
@@ -81,7 +89,7 @@ namespace AppWandre.Views
                                 if (pickerCompleto.SelectedIndex == 1)
                                 {
                                     valores = new String[] {entryModelo.Text.ToUpper(), entryMotor.Text + "\t-\t" +
-                                    entryDescricao.Text.ToUpper() + "\t-\t" + pickerCambio.SelectedItem.ToString().ToUpper() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text + "\t-\t" + KM,
+                                    entryDescricao.Text.ToUpper() + "\t-\t" + pickerCambio.SelectedItem.ToString().ToUpper() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text + KM,
                                     entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower() + ".png",
                                     @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower() + "-" +
                                     entryPlaca.Text.ToUpper() + @"\fotos\0" + foto.ToString() + ".jpeg"
@@ -90,7 +98,7 @@ namespace AppWandre.Views
                                 else
                                 {
                                     valores = new String[] {entryModelo.Text.ToUpper(), entryMotor.Text + "\t-\t" +
-                                    entryDescricao.Text.ToUpper() + "\t-\t" + pickerCambio.SelectedItem.ToString().ToUpper() + "\t-\t" + entryAno.Text + "\t-\t" + KM,
+                                    entryDescricao.Text.ToUpper() + "\t-\t" + pickerCambio.SelectedItem.ToString().ToUpper() + "\t-\t" + entryAno.Text + KM,
                                     entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower() + ".png",
                                     @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower() + "-" +
                                     entryPlaca.Text.ToUpper() + @"\fotos\0" + foto.ToString() + ".jpeg"
@@ -102,7 +110,7 @@ namespace AppWandre.Views
                                 if (pickerCompleto.SelectedIndex == 1)
                                 {
                                     valores = new String[] {entryModelo.Text.ToUpper(), entryMotor.Text + "\t-\t" +
-                                    entryDescricao.Text.ToUpper() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text + "\t-\t" + KM,
+                                    entryDescricao.Text.ToUpper() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text + KM,
                                     entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower() + ".png",
                                     @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower() + "-" +
                                     entryPlaca.Text.ToUpper() + @"\fotos\0" + foto.ToString() + ".jpeg"
@@ -111,7 +119,7 @@ namespace AppWandre.Views
                                 else
                                 {
                                     valores = new String[] {entryModelo.Text.ToUpper(), entryMotor.Text + "\t-\t" +
-                                    entryDescricao.Text.ToUpper() + "\t-\t" + entryAno.Text + "\t-\t" + KM,
+                                    entryDescricao.Text.ToUpper() + "\t-\t" + entryAno.Text + KM,
                                     entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower() + ".png",
                                     @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower() + "-" +
                                     entryPlaca.Text.ToUpper() + @"\fotos\0" + foto.ToString() + ".jpeg"
@@ -156,6 +164,7 @@ namespace AppWandre.Views
                 {
                     await DisplayAlert("Erro", "Erro ao gerar planilha. Tire um print e contacte o desenvolvedor" + erro, "Ok");
                 }
+                btnSalvar.IsEnabled = true;
             }
         }
         private bool VerificandoPreenchimentoFormulario()

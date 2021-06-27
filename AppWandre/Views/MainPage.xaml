@@ -22,6 +22,7 @@
                     <SearchBar x:Name="searchBarCarros"  Placeholder="Procurar" BackgroundColor="LightGray" TextChanged="SearchBarCarros_TextChanged"></SearchBar>
                 </Frame>
             </StackLayout>
+            
             <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2">
                 <ListView x:Name="listviewCarros" 
                           RowHeight="80" BackgroundColor="White" 
@@ -38,7 +39,7 @@
                                         Text="Excluir" IsDestructive="True" />
                                     <MenuItem Clicked="CompartilharItem"
                                         CommandParameter="{Binding .}"
-                                        Text="Compartilhar pelo WhatsApp" />
+                                        Text="Compartilhar" />
                                 </ViewCell.ContextActions>
                                 <Grid>
                                     <Image Source="{Binding Imagem}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"/>
@@ -56,6 +57,9 @@
             <ImageButton x:Name="btnAdicionarCarro" BackgroundColor="Transparent"
             Grid.Row="2" Grid.Column="1" VerticalOptions="Start" Source="plusButton.png" 
             Clicked="BtnAdicionarCarro_Clicked"/>
+            <ImageButton BackgroundColor="Transparent"
+            Grid.Row="2" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="End" Source="atualizar.png" 
+            Clicked="ListviewCarros_Refreshing"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

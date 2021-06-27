@@ -21,6 +21,7 @@ namespace AppWandre.Views
         }
         private async void BtnSalvarOpcionais_Clicked(object sender, EventArgs e)
         {
+            btnSalvarOpcionais.IsEnabled = false;
             contentRetornoOpcionais = string.Empty;
             await GravarOpcionais();
             PageCamera abrirCamera = new PageCamera
@@ -31,6 +32,7 @@ namespace AppWandre.Views
         }
         private async Task GravarOpcionais()
         {
+            btnSalvarOpcionais.IsEnabled = true;
             try
             {
                 contadorOpcionais = 0;
@@ -65,8 +67,16 @@ namespace AppWandre.Views
                             }
                             else
                             {
-                                contentOpcionais += string.Format("{0}, {1} e {2} com {3} KM. ", RetornoOpcionais[i],
-                                RetornoOpcionais[indexVidros], RetornoOpcionais[indexTravas], RetornoDadosCarro[5]);
+                                if(int.Parse(RetornoDadosCarro[5].Replace(".","")) == 0)
+                                {
+                                    contentOpcionais += string.Format("{0}, {1} e {2}, ZERO KM. ", RetornoOpcionais[i],
+                                    RetornoOpcionais[indexVidros], RetornoOpcionais[indexTravas]);
+                                }
+                                else
+                                {
+                                    contentOpcionais += string.Format("{0}, {1} e {2} com {3} KM. ", RetornoOpcionais[i],
+                                    RetornoOpcionais[indexVidros], RetornoOpcionais[indexTravas], RetornoDadosCarro[5]);
+                                }
                             }
                         }
                         else
@@ -77,7 +87,14 @@ namespace AppWandre.Views
                             }
                             else
                             {
-                                contentOpcionais += string.Format("{0} com {1} KM. ", RetornoOpcionais[i], RetornoDadosCarro[5]);
+                                if (int.Parse(RetornoDadosCarro[5].Replace(".", "")) == 0)
+                                {
+                                    contentOpcionais += string.Format("{0}, ZERO KM. ", RetornoOpcionais[i]);
+                                }
+                                else
+                                {
+                                    contentOpcionais += string.Format("{0} com {1} KM. ", RetornoOpcionais[i], RetornoDadosCarro[5]);
+                                }
                             }
                         }
                     }
@@ -86,7 +103,7 @@ namespace AppWandre.Views
                         if (contentRetornoOpcionais.Contains("vidros") && contentRetornoOpcionais.Contains("travas"))
                         {
                             int indexTravas = Array.IndexOf(RetornoOpcionais, "travas elétricas");
-                            int indexVidros = Array.IndexOf(RetornoOpcionais, "vidros vidros elétricos");
+                            int indexVidros = Array.IndexOf(RetornoOpcionais, "vidros elétricos");
 
                             if (i < contadorOpcionais - 1)
                             {

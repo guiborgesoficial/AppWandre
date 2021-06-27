@@ -73,6 +73,7 @@ namespace AppWandre.Views
 
         private void BtnCapturarFoto_Clicked(object sender, EventArgs e)
         {
+            btnCapturarFoto.IsEnabled = false;
             cameraView.Shutter();
         }
 
@@ -81,6 +82,7 @@ namespace AppWandre.Views
             imgRetornoCaptura.IsVisible = false;
             btnCancelado.IsVisible = false;
             btnVerificado.IsVisible = false;
+            btnCapturarFoto.IsEnabled = true;
             btnCapturarFoto.IsVisible = true;
             boolImagemAprovada = false;
         }
@@ -89,12 +91,15 @@ namespace AppWandre.Views
         {
             imgRetornoCaptura.IsVisible = false;
             btnCancelado.IsVisible = false;
+            btnVerificado.IsEnabled = false;
             btnVerificado.IsVisible = false;
+            btnCapturarFoto.IsEnabled = true;
             btnCapturarFoto.IsVisible = true;
             boolImagemAprovada = true;
             if (boolImagemAprovada)
             {
                 CapturandoFotos();
+                btnVerificado.IsEnabled = true;
             }
         }
     }
