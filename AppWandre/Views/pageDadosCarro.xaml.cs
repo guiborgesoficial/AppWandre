@@ -81,8 +81,8 @@ namespace AppWandre.Views
                                 if (pickerCompleto.SelectedIndex == 1)
                                 {
                                     valores = new String[] {entryModelo.Text.ToUpper(), entryMotor.Text + "\t-\t" +
-                                    entryDescricao.Text.ToUpper() + "\t-\t" + pickerCambio.SelectedItem.ToString() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text + "\t-\t" + KM,
-                                    entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString() + ".png",
+                                    entryDescricao.Text.ToUpper() + "\t-\t" + pickerCambio.SelectedItem.ToString().ToUpper() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text + "\t-\t" + KM,
+                                    entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower() + ".png",
                                     @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower() + "-" +
                                     entryPlaca.Text.ToUpper() + @"\fotos\0" + foto.ToString() + ".jpeg"
                                     };
@@ -90,8 +90,8 @@ namespace AppWandre.Views
                                 else
                                 {
                                     valores = new String[] {entryModelo.Text.ToUpper(), entryMotor.Text + "\t-\t" +
-                                    entryDescricao.Text.ToUpper() + "\t-\t" + pickerCambio.SelectedItem.ToString() + "\t-\t" + entryAno.Text + "\t-\t" + KM,
-                                    entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString() + ".png",
+                                    entryDescricao.Text.ToUpper() + "\t-\t" + pickerCambio.SelectedItem.ToString().ToUpper() + "\t-\t" + entryAno.Text + "\t-\t" + KM,
+                                    entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower() + ".png",
                                     @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower() + "-" +
                                     entryPlaca.Text.ToUpper() + @"\fotos\0" + foto.ToString() + ".jpeg"
                                     };
@@ -103,7 +103,7 @@ namespace AppWandre.Views
                                 {
                                     valores = new String[] {entryModelo.Text.ToUpper(), entryMotor.Text + "\t-\t" +
                                     entryDescricao.Text.ToUpper() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text + "\t-\t" + KM,
-                                    entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString() + ".png",
+                                    entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower() + ".png",
                                     @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower() + "-" +
                                     entryPlaca.Text.ToUpper() + @"\fotos\0" + foto.ToString() + ".jpeg"
                                     };
@@ -112,7 +112,7 @@ namespace AppWandre.Views
                                 {
                                     valores = new String[] {entryModelo.Text.ToUpper(), entryMotor.Text + "\t-\t" +
                                     entryDescricao.Text.ToUpper() + "\t-\t" + entryAno.Text + "\t-\t" + KM,
-                                    entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString() + ".png",
+                                    entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower() + ".png",
                                     @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower() + "-" +
                                     entryPlaca.Text.ToUpper() + @"\fotos\0" + foto.ToString() + ".jpeg"
                                     };
@@ -130,7 +130,7 @@ namespace AppWandre.Views
                         var pastaCarroEspecifico = await pastaCarros.CreateFolderAsync(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper()), CreationCollisionOption.OpenIfExists);
 
                         var arquivoXLSX = await pastaCarroEspecifico.CreateFileAsync(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".xlsx"), CreationCollisionOption.OpenIfExists);
-                        //var arquivoCSV = pastaCarro.CreateFile(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".csv"), CreationCollisionOption.OpenIfExists);
+                        //var arquivoCSV = pastaCarros.CreateFile(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".csv"), CreationCollisionOption.OpenIfExists);
                         var arquivoTXT = await pastaCarroEspecifico.CreateFileAsync(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".txt"), CreationCollisionOption.OpenIfExists);
 
                         string descricaoCarroContent = string.Format("{0}\b{1} \n{2} \n{3} \n{4} \nPlaca {5} \n{6} \nR$ {7}",
@@ -141,6 +141,7 @@ namespace AppWandre.Views
                         File.WriteAllBytes(arquivoXLSX.Path, excelPackage.GetAsByteArray());
                         //File.WriteAllBytes(arquivoCSV.Path, excelPackage.GetAsByteArray());
                         File.WriteAllText(arquivoTXT.Path, descricaoCarroContent);
+                        excelPackage.Dispose();
 
                         PageOpcionais abrirOpicionais = new PageOpcionais
                         {
