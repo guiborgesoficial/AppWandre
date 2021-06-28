@@ -32,7 +32,6 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
-
             <Entry x:Name="entryModelo" Placeholder="Modelo"></Entry>
             <Entry x:Name="entryDescricao" Placeholder="Descrição - ex: LTZ IMOTION"></Entry>
             <Entry x:Name="entryAno" Placeholder="Ano" Keyboard="Numeric"></Entry>
@@ -55,8 +54,8 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
-            <Entry x:Name="entryKM" Placeholder="Kilometragem" Keyboard="Numeric"></Entry>
-            <Entry x:Name="entryValor" Placeholder="Valor" Keyboard="Numeric"></Entry>
+            <Entry x:Name="entryKM" Placeholder="Kilometragem - ex: 14.780" Keyboard="Numeric"></Entry>
+            <Entry x:Name="entryValor" Placeholder="Valor - ex: 52.900" Keyboard="Numeric"></Entry>
             <Picker x:Name="pickerCompleto" Title="Completo?">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
@@ -66,6 +65,7 @@
                 </Picker.ItemsSource>
             </Picker>
             <Entry x:Name="entryPlaca" Placeholder="Placa"></Entry>
+            <ActivityIndicator x:Name="activIndicator" IsRunning="False" IsVisible="False" Color="YellowGreen" />
             <Button x:Name="btnSalvar" Text="Salvar" Clicked="BtnSalvar_Clicked"></Button>
         </StackLayout>
     </ScrollView>

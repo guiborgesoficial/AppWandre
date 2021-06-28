@@ -21,6 +21,8 @@ namespace AppWandre.Views
         }
         private async void BtnSalvarOpcionais_Clicked(object sender, EventArgs e)
         {
+            activIndicator.IsRunning = true;
+            activIndicator.IsVisible = true;
             btnSalvarOpcionais.IsEnabled = false;
             contentRetornoOpcionais = string.Empty;
             await GravarOpcionais();
@@ -47,7 +49,7 @@ namespace AppWandre.Views
 
                 for (int i = 0; i < contadorOpcionais; i++)
                 {
-                    if (int.Parse(RetornoDadosCarro[5].Replace(".", "")) < 80000)
+                    if (int.Parse(RetornoDadosCarro[7].Replace(".", "").Replace("KM","")) < 80000)
                     {
                         if (contentRetornoOpcionais.Contains("vidros") && contentRetornoOpcionais.Contains("travas"))
                         {
@@ -74,8 +76,8 @@ namespace AppWandre.Views
                                 }
                                 else
                                 {
-                                    contentOpcionais += string.Format("{0}, {1} e {2} com {3} KM. ", RetornoOpcionais[i],
-                                    RetornoOpcionais[indexVidros], RetornoOpcionais[indexTravas], RetornoDadosCarro[5]);
+                                    contentOpcionais += string.Format("{0}, {1} e {2} com {3}. ", RetornoOpcionais[i],
+                                    RetornoOpcionais[indexVidros], RetornoOpcionais[indexTravas], RetornoDadosCarro[7]);
                                 }
                             }
                         }
@@ -87,13 +89,13 @@ namespace AppWandre.Views
                             }
                             else
                             {
-                                if (int.Parse(RetornoDadosCarro[5].Replace(".", "")) == 0)
+                                if (int.Parse(RetornoDadosCarro[7].Replace(".", "").Replace("KM","")) == 0)
                                 {
                                     contentOpcionais += string.Format("{0}, ZERO KM. ", RetornoOpcionais[i]);
                                 }
                                 else
                                 {
-                                    contentOpcionais += string.Format("{0} com {1} KM. ", RetornoOpcionais[i], RetornoDadosCarro[5]);
+                                    contentOpcionais += string.Format("{0} com {1}. ", RetornoOpcionais[i], RetornoDadosCarro[7]);
                                 }
                             }
                         }
@@ -135,14 +137,27 @@ namespace AppWandre.Views
                         }
                     }
                 }
-                string txtAnuncio = string.Format("\n{0}- {1}- {2}- {3}com {4} \nPor apenas {5},00.",
-                RetornoDadosCarro[0], RetornoDadosCarro[1], RetornoDadosCarro[2], RetornoDadosCarro[3], contentOpcionais, RetornoDadosCarro[6]);
-                File.AppendAllText(arquivoCarroTxt.Path, txtAnuncio);
+
+                if(RetornoDadosCarro[4].Contains("Flex") || RetornoDadosCarro[4].Contains("Diesel"))
+                {
+                    string txtAnuncio = string.Format("\n{0}- {1}{2}- {3}- {4}com {5} \n\nPor apenas {6},00.",
+                    RetornoDadosCarro[0], RetornoDadosCarro[1], RetornoDadosCarro[4].ToUpper(), RetornoDadosCarro[2], RetornoDadosCarro[3], contentOpcionais, RetornoDadosCarro[8]);
+                    File.AppendAllText(arquivoCarroTxt.Path, txtAnuncio);
+                }
+                else
+                {
+                    string txtAnuncio = string.Format("\n{0}- {1}- {2}- {3}com {4} \n\nPor apenas {5},00.",
+                    RetornoDadosCarro[0], RetornoDadosCarro[1], RetornoDadosCarro[2], RetornoDadosCarro[3], contentOpcionais, RetornoDadosCarro[8]);
+                    File.AppendAllText(arquivoCarroTxt.Path, txtAnuncio);
+                }                
             }
             catch (Exception erro)
             {
                 await DisplayAlert("Erro - Capture a Tela e contacte o desenvolvedor", erro.Message, "OK");
+                btnSalvarOpcionais.IsEnabled = true;
             }
+            activIndicator.IsRunning = false;
+            activIndicator.IsVisible = false;
         }
         private int GetQuantidadeOpcionais()
         {

@@ -5,6 +5,7 @@ using PCLExt.FileStorage.Folders;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -14,16 +15,18 @@ using Xamarin.Forms;
 
 namespace AppWandre
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : ContentPage, INotifyPropertyChanged
     {
         private readonly ObservableCollection<ListaCarros> ObslistaCarros = new ObservableCollection<ListaCarros>();
-        
+
         public MainPage()
         {
             InitializeComponent();
             listviewCarros.BeginRefresh();
             listviewCarros.EndRefresh();
         }
+
+       
 
         private void BtnAdicionarCarro_Clicked(object sender, EventArgs e)
         {
@@ -79,8 +82,7 @@ namespace AppWandre
             ListaCarros item = (ListaCarros)itemSelect.CommandParameter;
 
             var localPasta = new LocalRootFolder();
-            var pastaCarros = localPasta.GetFolder("Carros");
-            var pastaCarrosCompactados = pastaCarros.CreateFolder("CarrosCompactados", CreationCollisionOption.OpenIfExists);
+            var pastaCarrosCompactados = localPasta.CreateFolder("CarrosCompactados", CreationCollisionOption.OpenIfExists);
 
             if (File.Exists(pastaCarrosCompactados.Path + @"/" + item.Name + ".zip"))
             {

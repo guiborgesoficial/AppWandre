@@ -131,6 +131,7 @@
                 <Label Text="Câmbio CVT" FontAttributes="Bold" Grid.Row="20" Grid.Column="3" Padding="0,8,0,0"></Label>
             </Grid>
         </ScrollView>
+        <ActivityIndicator x:Name="activIndicator" Grid.Row="0" Scale="0.5" IsRunning="False" IsVisible="False" Color="YellowGreen" />
         <Button x:Name="btnSalvarOpcionais" Text="SALVAR" Grid.Row="1" Clicked="BtnSalvarOpcionais_Clicked"></Button>
     </Grid>
 </ContentPage>

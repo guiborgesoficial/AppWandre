@@ -22,6 +22,7 @@ namespace AppWandre.Views
         }
         private void CameraView_MediaCaptured(object sender, MediaCapturedEventArgs e)
         {
+            btnCapturarFoto.IsEnabled = false;
             universalByteArrayFoto = null;
             RetornandoFoto(e);
         }
@@ -56,7 +57,10 @@ namespace AppWandre.Views
                 contadorFotos++;
                 btnCapturarFoto.Text = contadorFotos.ToString();
 
-                if(contadorFotos == 10)
+                activIndicator.IsRunning = false;
+                activIndicator.IsVisible = false;
+
+                if (contadorFotos == 10)
                 {
                     DisplayActionSheet("Sucesso", "OK", "", "Fotos amarzenadas com sucesso. Voltando para a página inicial...");
                     Navigation.PopToRootAsync();
@@ -71,12 +75,6 @@ namespace AppWandre.Views
                 bitmap.Width, bitmap.Height, matrix, true);
         }
 
-        private void BtnCapturarFoto_Clicked(object sender, EventArgs e)
-        {
-            btnCapturarFoto.IsEnabled = false;
-            cameraView.Shutter();
-        }
-
         private void ImageButtonCancelado_Clicked(object sender, EventArgs e)
         {
             imgRetornoCaptura.IsVisible = false;
@@ -89,6 +87,8 @@ namespace AppWandre.Views
 
         private void ImageButtonVerificado_Clicked(object sender, EventArgs e)
         {
+            activIndicator.IsVisible = true;
+            activIndicator.IsRunning = true;
             imgRetornoCaptura.IsVisible = false;
             btnCancelado.IsVisible = false;
             btnVerificado.IsEnabled = false;

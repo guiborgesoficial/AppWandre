@@ -35,9 +35,15 @@
                          IsVisible="false" BackgroundColor="Transparent" Clicked="ImageButtonCancelado_Clicked"></ImageButton>
             <ImageButton x:Name="btnCancelado" Source="verificado.png" Grid.Column="0" Grid.Row="2" HorizontalOptions="End" 
                          IsVisible="false" BackgroundColor="Transparent" Clicked="ImageButtonVerificado_Clicked"></ImageButton>
+
+
             <Button x:Name="btnCapturarFoto" Text="1" TextColor="White" 
                     Command="{Binding ShutterCommand, Source={x:Reference cameraView}}" 
-                    Grid.Column="0" Grid.Row="2" BackgroundColor="Red" WidthRequest="50" 
+                    Grid.Column="0" Grid.Row="2" BackgroundColor="Red" WidthRequest="50"
                     HeightRequest="50" VerticalOptions="Center" HorizontalOptions="Center" CornerRadius="100"></Button>
-        </Grid>
+            
+            <ActivityIndicator x:Name="activIndicator" Color="YellowGreen" Grid.Column="0" Grid.Row="2" IsVisible="false" IsRunning="False"></ActivityIndicator>
+
+
+    </Grid>
 </ContentPage>
