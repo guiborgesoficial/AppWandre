@@ -81,7 +81,7 @@ namespace AppWandre.Views
                             else
                             {
                                 foto = 1;
-                                loja = "l2";
+                                loja = "lj2";
                             }
 
                             var valores = new String[] { };

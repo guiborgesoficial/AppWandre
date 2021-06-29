@@ -46,11 +46,13 @@ namespace AppWandre.Views
                 var pastaFotosCruas = pastaCarro.CreateFolder("fotos_cruas", CreationCollisionOption.OpenIfExists);
                 var arquivo = pastaFotosCruas.CreateFile("0" + contadorFotos + ".jpeg", CreationCollisionOption.ReplaceExisting);
 
-                Android.Graphics.Bitmap bitmapCamera = BitmapFactory.DecodeByteArray(universalByteArrayFoto, 0, universalByteArrayFoto.Length);
+                Bitmap bitmapCamera = BitmapFactory.DecodeByteArray(universalByteArrayFoto, 0, universalByteArrayFoto.Length);
                 var bitmapRotacionado = RotacionarBitmap(90, bitmapCamera);
-
+                var bitmap1080 = Android.Graphics.Bitmap.CreateScaledBitmap(bitmapRotacionado, 1080, 1080, true);
+                
                 MemoryStream stream = new MemoryStream();
-                bitmapRotacionado.Compress(Android.Graphics.Bitmap.CompressFormat.Jpeg, 100, stream);
+                bitmap1080.Compress(Android.Graphics.Bitmap.CompressFormat.Jpeg, 100, stream);
+                
                 byte[] byteArrayRotacionado = stream.ToArray();
                 File.WriteAllBytes(arquivo.Path, byteArrayRotacionado);
 
@@ -69,10 +71,10 @@ namespace AppWandre.Views
         }
         public Android.Graphics.Bitmap RotacionarBitmap(int angulo, Android.Graphics.Bitmap bitmap)
         {
-            Matrix matrix = new Matrix();
+            Android.Graphics.Matrix matrix = new Android.Graphics.Matrix();
             matrix.PostRotate(angulo);
-            return Android.Graphics.Bitmap.CreateBitmap(bitmap, 0, 0,
-                bitmap.Width, bitmap.Height, matrix, true);
+            return Android.Graphics.Bitmap.CreateBitmap(bitmap, 165, 0,
+                bitmap.Height, bitmap.Height, matrix, true);
         }
 
         private void ImageButtonCancelado_Clicked(object sender, EventArgs e)
