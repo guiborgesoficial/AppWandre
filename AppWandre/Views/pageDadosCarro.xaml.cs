@@ -224,7 +224,7 @@ namespace AppWandre.Views
         {
             var regexTratamentoInput = new Regex(@"^[a-zA-Z0-9-.\s]+$");
             if (pickerMarca.SelectedIndex == -1 || entryModelo.Text == string.Empty || entryDescricao.Text == string.Empty
-               || entryAno.Text.Length < 4 || entryMotor.Text == string.Empty ||
+               || entryAno.Text.Length != 4 || entryMotor.Text.Length != 3 ||
                pickerTipoMotor.SelectedIndex == -1 || pickerCambio.SelectedIndex == -1 ||
                entryKM.Text == string.Empty || entryValor.Text.Length < 5 || pickerCompleto.SelectedIndex == -1
                || entryPlaca.Text == string.Empty
@@ -246,7 +246,31 @@ namespace AppWandre.Views
             }
             else
             {
-                return true;
+                if(!entryKM.Text.Contains(".") || !entryValor.Text.Contains("."))
+                {
+                    DisplayAlert("Campos Incorretos", "Os campos KM e/ou Valor estão incorretos. Utilize o ponto (.) como separador decimal.", "OK");
+                    btnSalvar.IsEnabled = true;
+                    activIndicator.IsRunning = false;
+                    activIndicator.IsVisible = false;
+                    return false;
+                }
+                else
+                {
+                    string[] retornoValor = entryValor.Text.Split('.');
+                    string[] retornoKM = entryValor.Text.Split('.');
+                    if (retornoValor[1].Length == 3 || retornoKM[1].Length == 3)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        DisplayAlert("Campos Incorretos", "Os campos KM e/ou Valor estão incorretos. Verifique a quantidade de zeros depois do separador decimal.", "OK");
+                        btnSalvar.IsEnabled = true;
+                        activIndicator.IsRunning = false;
+                        activIndicator.IsVisible = false;
+                        return false;
+                    }
+                }
             }
         }
     }
