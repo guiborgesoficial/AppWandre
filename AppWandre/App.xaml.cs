@@ -8,7 +8,7 @@ namespace AppWandre
         public App()
         {
             InitializeComponent();
-            var página = new NavigationPage(new MainPage());
+            var página = new NavigationPage(new MainPage()) { BarBackgroundColor = Color.FromHex("#a4c738")};
             MainPage = página;
         }
 

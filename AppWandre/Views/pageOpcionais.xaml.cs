@@ -19,6 +19,11 @@ namespace AppWandre.Views
         {
             InitializeComponent();
         }
+        protected override bool OnBackButtonPressed()
+        {
+            DisplayAlert("Atenção", "Não é possível voltar para as páginas anteriores. Complete a rotina para prosseguir.", "OK");
+            return true;
+        }
         private async void BtnSalvarOpcionais_Clicked(object sender, EventArgs e)
         {
             activIndicator.IsRunning = true;
@@ -146,7 +151,7 @@ namespace AppWandre.Views
                 }
                 else
                 {
-                    string txtAnuncio = string.Format("\n{0}- {1}- {2}- {3}com {4} \n\nPor apenas {5},00.",
+                    string txtAnuncio = string.Format("\n\n{0}- {1}- {2}- {3}com {4} \n\nPor apenas {5},00.",
                     RetornoDadosCarro[0], RetornoDadosCarro[1], RetornoDadosCarro[2], RetornoDadosCarro[3], contentOpcionais, RetornoDadosCarro[8]);
                     File.AppendAllText(arquivoCarroTxt.Path, txtAnuncio);
                 }                

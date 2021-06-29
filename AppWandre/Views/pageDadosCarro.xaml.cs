@@ -64,7 +64,7 @@ namespace AppWandre.Views
                                 }
                                 else
                                 {
-                                    KM = "- " + entryKM.Text + "\nKM";
+                                    KM = "- " + entryKM.Text + "\tKM";
                                 }
                             }
                             else
@@ -92,20 +92,20 @@ namespace AppWandre.Views
                                 {
                                     if (pickerCompleto.SelectedIndex == 1)
                                     {
-                                        valores = new String[] {entryModelo.Text.ToUpper(), entryMotor.Text + "\t" + pickerTipoMotor.SelectedItem.ToString().ToUpper() + "\t-\t" +
-                                        entryDescricao.Text.ToUpper() + "\t-\t" + pickerCambio.SelectedItem.ToString().ToUpper() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text + KM,
-                                        entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower() + ".png",
-                                        @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower() + "-" +
-                                        entryPlaca.Text.ToUpper() + @"\fotos\0" + foto.ToString() + ".jpeg"
+                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + pickerTipoMotor.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" +
+                                        entryDescricao.Text.ToUpper().Trim() + "\t-\t" + pickerCambio.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text.Trim() + KM,
+                                        entryValor.Text.Trim(), @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower().Trim() + ".png",
+                                        @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower().Trim() + "-" +
+                                        entryPlaca.Text.ToUpper().Trim() + @"\fotos\0" + foto.ToString() + ".jpeg"
                                         };
                                     }
                                     else
                                     {
-                                        valores = new String[] {entryModelo.Text.ToUpper(), entryMotor.Text + "\t" + pickerTipoMotor.SelectedItem.ToString().ToUpper() + "\t-\t" +
-                                        entryDescricao.Text.ToUpper() + "\t-\t" + pickerCambio.SelectedItem.ToString().ToUpper() + "\t-\t" + entryAno.Text + KM,
-                                        entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower() + ".png",
-                                        @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower() + "-" +
-                                        entryPlaca.Text.ToUpper() + @"\fotos\0" + foto.ToString() + ".jpeg"
+                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + pickerTipoMotor.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" +
+                                        entryDescricao.Text.ToUpper().Trim() + "\t-\t" + pickerCambio.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" + entryAno.Text.Trim() + KM,
+                                        entryValor.Text.Trim(), @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower().Trim() + ".png",
+                                        @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower().Trim() + "-" +
+                                        entryPlaca.Text.ToUpper().Trim() + @"\fotos\0" + foto.ToString() + ".jpeg"
                                         };
                                     }
                                 }
@@ -113,20 +113,20 @@ namespace AppWandre.Views
                                 {
                                     if (pickerCompleto.SelectedIndex == 1)
                                     {
-                                        valores = new String[] {entryModelo.Text.ToUpper(), entryMotor.Text  + "\t" + pickerTipoMotor.SelectedItem.ToString().ToUpper() + "\t-\t" +
-                                        entryDescricao.Text.ToUpper() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text + KM,
-                                        entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower() + ".png",
-                                        @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower() + "-" +
-                                        entryPlaca.Text.ToUpper() + @"\fotos\0" + foto.ToString() + ".jpeg"
+                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + pickerTipoMotor.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" +
+                                        entryDescricao.Text.ToUpper().Trim() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text.Trim() + KM,
+                                        entryValor.Text.Trim(), @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower().Trim() + ".png",
+                                        @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower().Trim() + "-" +
+                                        entryPlaca.Text.ToUpper().Trim() + @"\fotos\0" + foto.ToString() + ".jpeg"
                                         };
                                     }
                                     else
                                     {
-                                        valores = new String[] {entryModelo.Text.ToUpper(), entryMotor.Text + "\t" + pickerTipoMotor.SelectedItem.ToString().ToUpper() + "\t-\t" +
-                                        entryDescricao.Text.ToUpper() + "\t-\t" + entryAno.Text + KM,
-                                        entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower() + ".png",
-                                        @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower() + "-" +
-                                        entryPlaca.Text.ToUpper() + @"\fotos\0" + foto.ToString() + ".jpeg"
+                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + pickerTipoMotor.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" +
+                                        entryDescricao.Text.ToUpper().Trim() + "\t-\t" + entryAno.Text.Trim() + KM,
+                                        entryValor.Text.Trim(), @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower().Trim() + ".png",
+                                        @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower().Trim() + "-" +
+                                        entryPlaca.Text.ToUpper().Trim() + @"\fotos\0" + foto.ToString() + ".jpeg"
                                         };
                                     }
                                 }
@@ -137,20 +137,20 @@ namespace AppWandre.Views
                                 {
                                     if (pickerCompleto.SelectedIndex == 1)
                                     {
-                                        valores = new String[] {entryModelo.Text.ToUpper(), entryMotor.Text + "\t-\t" +
-                                        entryDescricao.Text.ToUpper() + "\t-\t" + pickerCambio.SelectedItem.ToString().ToUpper() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text + KM,
-                                        entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower() + ".png",
-                                        @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower() + "-" +
-                                        entryPlaca.Text.ToUpper() + @"\fotos\0" + foto.ToString() + ".jpeg"
+                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + "\t-\t" +
+                                        entryDescricao.Text.ToUpper().Trim() + "\t-\t" + pickerCambio.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text.Trim() + KM,
+                                        entryValor.Text.Trim(), @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower().Trim() + ".png",
+                                        @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower().Trim() + "-" +
+                                        entryPlaca.Text.ToUpper().Trim() + @"\fotos\0" + foto.ToString() + ".jpeg"
                                         };
                                     }
                                     else
                                     {
-                                        valores = new String[] {entryModelo.Text.ToUpper(), entryMotor.Text + "\t-\t" +
-                                        entryDescricao.Text.ToUpper() + "\t-\t" + pickerCambio.SelectedItem.ToString().ToUpper() + "\t-\t" + entryAno.Text + KM,
-                                        entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower() + ".png",
-                                        @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower() + "-" +
-                                        entryPlaca.Text.ToUpper() + @"\fotos\0" + foto.ToString() + ".jpeg"
+                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + "\t-\t" +
+                                        entryDescricao.Text.ToUpper().Trim() + "\t-\t" + pickerCambio.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" + entryAno.Text.Trim() + KM,
+                                        entryValor.Text.Trim(), @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower().Trim() + ".png",
+                                        @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower().Trim() + "-" +
+                                        entryPlaca.Text.ToUpper().Trim() + @"\fotos\0" + foto.ToString() + ".jpeg"
                                         };
                                     }
                                 }
@@ -158,20 +158,20 @@ namespace AppWandre.Views
                                 {
                                     if (pickerCompleto.SelectedIndex == 1)
                                     {
-                                        valores = new String[] {entryModelo.Text.ToUpper(), entryMotor.Text + "\t-\t" +
-                                        entryDescricao.Text.ToUpper() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text + KM,
-                                        entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower() + ".png",
-                                        @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower() + "-" +
-                                        entryPlaca.Text.ToUpper() + @"\fotos\0" + foto.ToString() + ".jpeg"
+                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + "\t-\t" +
+                                        entryDescricao.Text.ToUpper().Trim() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text.Trim() + KM,
+                                        entryValor.Text.Trim(), @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower().Trim() + ".png",
+                                        @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower().Trim() + "-" +
+                                        entryPlaca.Text.ToUpper().Trim() + @"\fotos\0" + foto.ToString() + ".jpeg"
                                         };
                                     }
                                     else
                                     {
-                                        valores = new String[] {entryModelo.Text.ToUpper(), entryMotor.Text + "\t-\t" +
-                                        entryDescricao.Text.ToUpper() + "\t-\t" + entryAno.Text + KM,
-                                        entryValor.Text, @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower() + ".png",
-                                        @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower() + "-" +
-                                        entryPlaca.Text.ToUpper() + @"\fotos\0" + foto.ToString() + ".jpeg"
+                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + "\t-\t" +
+                                        entryDescricao.Text.ToUpper().Trim() + "\t-\t" + entryAno.Text.Trim() + KM,
+                                        entryValor.Text.Trim(), @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower().Trim() + ".png",
+                                        @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower().Trim() + "-" +
+                                        entryPlaca.Text.ToUpper().Trim() + @"\fotos\0" + foto.ToString() + ".jpeg"
                                         };
                                     }
                                 }
@@ -192,9 +192,9 @@ namespace AppWandre.Views
                         var arquivoTXT = await pastaCarroEspecifico.CreateFileAsync(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".txt"), CreationCollisionOption.OpenIfExists);
 
                         string descricaoCarroContent = string.Format("{0}\b{1} \n{2} \n{3} \n{4} \n{5} \n{6} \nPlaca {7} \n{8} KM \nR$ {9}",
-                        pickerMarca.SelectedItem.ToString().ToUpper(), entryModelo.Text.ToUpper(), entryMotor.Text, 
-                        entryDescricao.Text.ToUpper(), entryAno.Text, pickerTipoMotor.SelectedItem.ToString(), 
-                        pickerCambio.SelectedItem.ToString(), entryPlaca.Text.ToUpper(), entryKM.Text, entryValor.Text
+                        pickerMarca.SelectedItem.ToString().ToUpper().Trim(), entryModelo.Text.ToUpper().Trim(), entryMotor.Text.Trim(), 
+                        entryDescricao.Text.ToUpper().Trim(), entryAno.Text.Trim(), pickerTipoMotor.SelectedItem.ToString().Trim(), 
+                        pickerCambio.SelectedItem.ToString().Trim(), entryPlaca.Text.ToUpper().Trim(), entryKM.Text.Trim(), entryValor.Text.Trim()
                         );
 
                         File.WriteAllBytes(arquivoXLSX.Path, excelPackage.GetAsByteArray());

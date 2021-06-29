@@ -49,7 +49,7 @@ namespace AppWandre
                 for (int i = 0; i < listaPastas.Count; i++)
                 {
                     var pastaCarroInterna = await pastaCarros.GetFolderAsync(listaPastas[i].Name);
-                    var pastaFotosCruas = await pastaCarroInterna.GetFolderAsync("fotos_cruas");
+                    var pastaFotosCruas = await pastaCarroInterna.GetFolderAsync("fotos");
                     var imagem = await pastaFotosCruas.GetFileAsync("01.jpeg");
 
                     ObslistaCarros.Add(new ListaCarros() { Name = listaPastas[i].Name, Path = listaPastas[i].Path, Imagem = imagem.Path });

@@ -3,6 +3,7 @@ using PCLExt.FileStorage;
 using PCLExt.FileStorage.Folders;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -20,6 +21,11 @@ namespace AppWandre.Views
         {
             InitializeComponent();
         }
+        protected override bool OnBackButtonPressed()
+        {
+            DisplayAlert("Atenção", "Não é possível voltar para as páginas anteriores. Complete a rotina para prosseguir.", "OK");
+            return true;
+        }
         private void CameraView_MediaCaptured(object sender, MediaCapturedEventArgs e)
         {
             btnCapturarFoto.IsEnabled = false;
@@ -36,14 +42,14 @@ namespace AppWandre.Views
             btnCapturarFoto.IsVisible = false;
             universalByteArrayFoto = fotoRetorno.ImageData;
         }
-        private void CapturandoFotos()
+        private async Task CapturandoFotos()
         {
             if (contadorFotos < 10)
             {
                 LocalRootFolder localPasta = new LocalRootFolder();
                 var pastaPrincipal = localPasta.GetFolder("Carros");
                 var pastaCarro = pastaPrincipal.GetFolder(stringPath);
-                var pastaFotosCruas = pastaCarro.CreateFolder("fotos_cruas", CreationCollisionOption.OpenIfExists);
+                var pastaFotosCruas = pastaCarro.CreateFolder("fotos", CreationCollisionOption.OpenIfExists);
                 var arquivo = pastaFotosCruas.CreateFile("0" + contadorFotos + ".jpeg", CreationCollisionOption.ReplaceExisting);
 
                 Bitmap bitmapCamera = BitmapFactory.DecodeByteArray(universalByteArrayFoto, 0, universalByteArrayFoto.Length);
@@ -54,18 +60,23 @@ namespace AppWandre.Views
                 bitmap1080.Compress(Android.Graphics.Bitmap.CompressFormat.Jpeg, 100, stream);
                 
                 byte[] byteArrayRotacionado = stream.ToArray();
-                File.WriteAllBytes(arquivo.Path, byteArrayRotacionado);
+
+                Task gravando = Task.Run(() =>
+                {
+                    Task.Delay(2000).Wait();
+                    File.WriteAllBytes(arquivo.Path, byteArrayRotacionado);
+
+                });
 
                 contadorFotos++;
                 btnCapturarFoto.Text = contadorFotos.ToString();
-
                 activIndicator.IsRunning = false;
                 activIndicator.IsVisible = false;
 
                 if (contadorFotos == 10)
                 {
-                    DisplayActionSheet("Sucesso", "OK", "", "Fotos amarzenadas com sucesso. Voltando para a página inicial...");
-                    Navigation.PopToRootAsync();
+                    await DisplayActionSheet("Sucesso", "OK", "", "Fotos amarzenadas com sucesso. Voltando para a página inicial...");
+                    await Navigation.PopToRootAsync();
                 }
             }
         }
@@ -87,7 +98,7 @@ namespace AppWandre.Views
             boolImagemAprovada = false;
         }
 
-        private void ImageButtonVerificado_Clicked(object sender, EventArgs e)
+        private async void ImageButtonVerificado_Clicked(object sender, EventArgs e)
         {
             activIndicator.IsVisible = true;
             activIndicator.IsRunning = true;
@@ -95,13 +106,13 @@ namespace AppWandre.Views
             btnCancelado.IsVisible = false;
             btnVerificado.IsEnabled = false;
             btnVerificado.IsVisible = false;
-            btnCapturarFoto.IsEnabled = true;
-            btnCapturarFoto.IsVisible = true;
             boolImagemAprovada = true;
             if (boolImagemAprovada)
             {
-                CapturandoFotos();
+                await CapturandoFotos();
                 btnVerificado.IsEnabled = true;
+                btnCapturarFoto.IsEnabled = true;
+                btnCapturarFoto.IsVisible = true;
             }
         }
     }
