@@ -82,9 +82,10 @@ namespace AppWandre.Views
         }
         public Android.Graphics.Bitmap RotacionarBitmap(int angulo, Android.Graphics.Bitmap bitmap)
         {
+            double x = (bitmap.Width / 8) + 5;
             Android.Graphics.Matrix matrix = new Android.Graphics.Matrix();
             matrix.PostRotate(angulo);
-            return Android.Graphics.Bitmap.CreateBitmap(bitmap, 165, 0,
+            return Android.Graphics.Bitmap.CreateBitmap(bitmap, Convert.ToInt32(x), 0,
                 bitmap.Height, bitmap.Height, matrix, true);
         }
 
