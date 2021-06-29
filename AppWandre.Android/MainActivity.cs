@@ -12,7 +12,7 @@ namespace AppWandre.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-
+            Window.SetStatusBarColor(Android.Graphics.Color.Rgb(164, 199, 56));
             base.OnCreate(savedInstanceState);
 
             string cultureName = "en-US";
