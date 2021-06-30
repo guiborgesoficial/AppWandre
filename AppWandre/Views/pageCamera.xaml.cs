@@ -28,7 +28,10 @@ namespace AppWandre.Views
         }
         private void CameraView_MediaCaptured(object sender, MediaCapturedEventArgs e)
         {
+            activIndicator.IsRunning = true;
+            activIndicator.IsVisible = true;
             btnCapturarFoto.IsEnabled = false;
+            btnCapturarFoto.IsVisible = false;
             universalByteArrayFoto = null;
             RetornandoFoto(e);
         }
@@ -38,8 +41,11 @@ namespace AppWandre.Views
             imgRetornoCaptura.Rotation = fotoRetorno.Rotation;
             imgRetornoCaptura.IsVisible = true;
             btnCancelado.IsVisible = true;
+            btnCancelado.IsEnabled = true;
             btnVerificado.IsVisible = true;
+            btnVerificado.IsEnabled = true;
             btnCapturarFoto.IsVisible = false;
+            btnCapturarFoto.IsEnabled = false;
             universalByteArrayFoto = fotoRetorno.ImageData;
         }
         private async Task CapturandoFotos()
@@ -61,18 +67,14 @@ namespace AppWandre.Views
                 
                 byte[] byteArrayRotacionado = stream.ToArray();
 
-                Task gravando = Task.Run(() =>
-                {
-                    Task.Delay(2000).Wait();
-                    File.WriteAllBytes(arquivo.Path, byteArrayRotacionado);
-
-                });
+                File.WriteAllBytes(arquivo.Path, byteArrayRotacionado);
 
                 contadorFotos++;
                 btnCapturarFoto.Text = contadorFotos.ToString();
                 activIndicator.IsRunning = false;
                 activIndicator.IsVisible = false;
-
+                btnCapturarFoto.IsEnabled = true;
+                btnCapturarFoto.IsVisible = true;
                 if (contadorFotos == 10)
                 {
                     await DisplayActionSheet("Sucesso", "OK", "", "Fotos amarzenadas com sucesso. Voltando para a página inicial...");
@@ -101,8 +103,6 @@ namespace AppWandre.Views
 
         private async void ImageButtonVerificado_Clicked(object sender, EventArgs e)
         {
-            activIndicator.IsVisible = true;
-            activIndicator.IsRunning = true;
             imgRetornoCaptura.IsVisible = false;
             btnCancelado.IsVisible = false;
             btnVerificado.IsEnabled = false;
@@ -111,9 +111,6 @@ namespace AppWandre.Views
             if (boolImagemAprovada)
             {
                 await CapturandoFotos();
-                btnVerificado.IsEnabled = true;
-                btnCapturarFoto.IsEnabled = true;
-                btnCapturarFoto.IsVisible = true;
             }
         }
     }

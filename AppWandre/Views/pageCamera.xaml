@@ -30,10 +30,10 @@
             <Image Source="mascaraCamera.png" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"></Image>
             
             <Image x:Name="imgRetornoCaptura" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Scale="1.3"></Image>
-            
-            <ImageButton x:Name="btnVerificado" Source="cancelado.png" Grid.Column="0" Grid.Row="2" HorizontalOptions="Start" 
+
+            <ImageButton x:Name="btnCancelado" Source="cancelado.png" Grid.Column="0" Grid.Row="2" HorizontalOptions="Start" 
                          IsVisible="false" BackgroundColor="Transparent" Clicked="ImageButtonCancelado_Clicked"></ImageButton>
-            <ImageButton x:Name="btnCancelado" Source="verificado.png" Grid.Column="0" Grid.Row="2" HorizontalOptions="End" 
+            <ImageButton x:Name="btnVerificado" Source="verificado.png" Grid.Column="0" Grid.Row="2" HorizontalOptions="End" 
                          IsVisible="false" BackgroundColor="Transparent" Clicked="ImageButtonVerificado_Clicked"></ImageButton>
 
 

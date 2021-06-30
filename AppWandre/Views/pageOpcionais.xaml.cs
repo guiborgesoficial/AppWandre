@@ -74,7 +74,7 @@ namespace AppWandre.Views
                             }
                             else
                             {
-                                if(int.Parse(RetornoDadosCarro[5].Replace(".","")) == 0)
+                                if(int.Parse(RetornoDadosCarro[7].Replace(".","").Replace("KM","")) == 0)
                                 {
                                     contentOpcionais += string.Format("{0}, {1} e {2}, ZERO KM. ", RetornoOpcionais[i],
                                     RetornoOpcionais[indexVidros], RetornoOpcionais[indexTravas]);
@@ -158,7 +158,7 @@ namespace AppWandre.Views
             }
             catch (Exception erro)
             {
-                await DisplayAlert("Erro - Capture a Tela e contacte o desenvolvedor", erro.Message, "OK");
+                await DisplayAlert("Erro - Capture a Tela e contacte o desenvolvedor", erro.ToString(), "OK");
                 btnSalvarOpcionais.IsEnabled = true;
             }
             activIndicator.IsRunning = false;
