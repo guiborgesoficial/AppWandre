@@ -21,26 +21,18 @@ namespace AppWandre
     public partial class MainPage : ContentPage, INotifyPropertyChanged
     {
         private readonly ObservableCollection<ListaCarros> ObslistaCarros = new ObservableCollection<ListaCarros>();
-        private readonly ISimpleAudioPlayer player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
 
         public MainPage()
         {
             InitializeComponent();
             listviewCarros.BeginRefresh();
             listviewCarros.EndRefresh();
-
-            var assembly = typeof(App).GetTypeInfo().Assembly;
-            Stream audioStream = assembly.GetManifestResourceStream("AppWandre." + "pop.mp3");
-
-            player.Load(audioStream);
         }
 
        
 
         private void BtnAdicionarCarro_Clicked(object sender, EventArgs e)
         {
-            player.Play();
-
             btnAdicionarCarro.IsEnabled = false;    
             Navigation.PushAsync(new PageDadosCarro());
             btnAdicionarCarro.IsEnabled = true;
@@ -89,7 +81,6 @@ namespace AppWandre
         }
         public async void CompartilharItem(object sender, EventArgs e)
         {
-            player.Play();
             var itemSelect = ((MenuItem)sender);
             ListaCarros item = (ListaCarros)itemSelect.CommandParameter;
 
@@ -130,7 +121,6 @@ namespace AppWandre
         }
         public async void ListviewCarros_Refreshing(object sender, EventArgs e)
         {
-            player.Play();
             if (string.IsNullOrEmpty(searchBarCarros.Text))
             {
                 await ConsultandoCarros();

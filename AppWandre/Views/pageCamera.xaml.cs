@@ -122,7 +122,6 @@ namespace AppWandre.Views
 
         private async void ImageButtonVerificado_Clicked(object sender, EventArgs e)
         {
-            player.Play();
             imgRetornoCaptura.IsVisible = false;
             btnCancelado.IsVisible = false;
             btnVerificado.IsEnabled = false;

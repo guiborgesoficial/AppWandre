@@ -13,18 +13,15 @@
   <ItemGroup>
     <None Remove="cameraSound.mp3" />
     <None Remove="drum.wav" />
-    <None Remove="pop.mp3" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="cameraSound.mp3" />
     <EmbeddedResource Include="drum.wav" />
-    <EmbeddedResource Include="pop.mp3" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="cameraSound.mp3" />
-    <Resource Include="pop.mp3" />
   </ItemGroup>
 
   <ItemGroup>
