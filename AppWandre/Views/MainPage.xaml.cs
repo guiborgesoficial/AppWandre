@@ -79,6 +79,13 @@ namespace AppWandre
             ListaCarros item = (ListaCarros)itemSelect.CommandParameter;
             ObslistaCarros.Remove(item);
             Directory.Delete(item.Path, true);
+            var localPasta = new LocalRootFolder();
+            var CarrosCompactados = localPasta.GetFolder("CarrosCompactados");
+
+            if (File.Exists(CarrosCompactados.Path + @"/" + item.Name + ".zip"))
+            {
+                File.Delete(CarrosCompactados.Path + @"/" + item.Name + ".zip");
+            }
         }
         public async void CompartilharItem(object sender, EventArgs e)
         {
