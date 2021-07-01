@@ -188,7 +188,7 @@ namespace AppWandre.Views
                         var pastaCarroEspecifico = await pastaCarros.CreateFolderAsync(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper()), CreationCollisionOption.OpenIfExists);
 
                         var arquivoXLSX = await pastaCarroEspecifico.CreateFileAsync(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".xlsx"), CreationCollisionOption.OpenIfExists);
-                        //var arquivoCSV = pastaCarros.CreateFile(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".csv"), CreationCollisionOption.OpenIfExists);
+                        var arquivoCSV = await pastaCarroEspecifico.CreateFileAsync(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".csv"), CreationCollisionOption.OpenIfExists);
                         var arquivoTXT = await pastaCarroEspecifico.CreateFileAsync(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".txt"), CreationCollisionOption.OpenIfExists);
 
                         string descricaoCarroContent = string.Format("{0}\b{1} \n{2} \n{3} \n{4} \n{5} \n{6} \nPlaca {7} \n{8} KM \nR$ {9}",
@@ -196,9 +196,12 @@ namespace AppWandre.Views
                         entryDescricao.Text.ToUpper().Trim(), entryAno.Text.Trim(), pickerTipoMotor.SelectedItem.ToString().Trim(), 
                         pickerCambio.SelectedItem.ToString().Trim(), entryPlaca.Text.ToUpper().Trim(), entryKM.Text.Trim(), entryValor.Text.Trim()
                         );
+                        var file = new FileInfo(arquivoCSV.Path);
+                        var format = new ExcelOutputTextFormat();
+                        await DisplayAlert("Erro", "Erro ao gerar planilha. Tire um print e contacte o desenvolvedor" + sheet.Cells, "Ok");
 
                         File.WriteAllBytes(arquivoXLSX.Path, excelPackage.GetAsByteArray());
-                        //File.WriteAllBytes(arquivoCSV.Path, excelPackage.GetAsByteArray());
+                        await sheet.Cells["A1:F19"].SaveToTextAsync(file, format);
                         File.WriteAllText(arquivoTXT.Path, descricaoCarroContent);
                         excelPackage.Dispose();
 
@@ -246,9 +249,9 @@ namespace AppWandre.Views
             }
             else
             {
-                if(!entryKM.Text.Contains(".") || !entryValor.Text.Contains("."))
+                if(!entryKM.Text.Contains(".") || !entryValor.Text.Contains(".") || !entryMotor.Text.Contains("."))
                 {
-                    DisplayAlert("Campos Incorretos", "Os campos KM e/ou Valor estão incorretos. Utilize o ponto (.) como separador decimal.", "OK");
+                    DisplayAlert("Campos Incorretos", "Os campos KM e/ou Valor e/ou Motor estão incorretos. Utilize o ponto (.) como separador decimal.", "OK");
                     btnSalvar.IsEnabled = true;
                     activIndicator.IsRunning = false;
                     activIndicator.IsVisible = false;

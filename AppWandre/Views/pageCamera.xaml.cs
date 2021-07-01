@@ -1,8 +1,10 @@
 ﻿using Android.Graphics;
 using PCLExt.FileStorage;
 using PCLExt.FileStorage.Folders;
+using Plugin.SimpleAudioPlayer;
 using System;
 using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
@@ -17,9 +19,14 @@ namespace AppWandre.Views
         public string stringPath;
         private bool boolImagemAprovada;
         private byte[] universalByteArrayFoto;
+        private readonly ISimpleAudioPlayer player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+
         public PageCamera()
         {
             InitializeComponent();
+            var assembly = typeof(App).GetTypeInfo().Assembly;
+            Stream audioStream = assembly.GetManifestResourceStream("AppWandre." + "cameraSound.mp3");
+            player.Load(audioStream);
         }
         protected override bool OnBackButtonPressed()
         {
@@ -28,6 +35,7 @@ namespace AppWandre.Views
         }
         private void CameraView_MediaCaptured(object sender, MediaCapturedEventArgs e)
         {
+            player.Play();
             activIndicator.IsRunning = true;
             activIndicator.IsVisible = true;
             btnCapturarFoto.IsEnabled = false;
@@ -84,7 +92,16 @@ namespace AppWandre.Views
         }
         public Android.Graphics.Bitmap RotacionarBitmap(int angulo, Android.Graphics.Bitmap bitmap)
         {
-            double x = (bitmap.Width / 8) + 5;
+            double x;
+            if (bitmap.Height != bitmap.Width)
+            {
+                x = (bitmap.Width / 8) + 5;
+            }
+            else
+            {
+                x = 0;
+            }
+
             Android.Graphics.Matrix matrix = new Android.Graphics.Matrix();
             matrix.PostRotate(angulo);
             return Android.Graphics.Bitmap.CreateBitmap(bitmap, Convert.ToInt32(x), 0,
@@ -93,6 +110,8 @@ namespace AppWandre.Views
 
         private void ImageButtonCancelado_Clicked(object sender, EventArgs e)
         {
+            activIndicator.IsVisible = false;
+            activIndicator.IsRunning = false;
             imgRetornoCaptura.IsVisible = false;
             btnCancelado.IsVisible = false;
             btnVerificado.IsVisible = false;
@@ -103,6 +122,7 @@ namespace AppWandre.Views
 
         private async void ImageButtonVerificado_Clicked(object sender, EventArgs e)
         {
+            player.Play();
             imgRetornoCaptura.IsVisible = false;
             btnCancelado.IsVisible = false;
             btnVerificado.IsEnabled = false;
