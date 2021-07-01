@@ -1,4 +1,5 @@
 ﻿using Android;
+using Android.Widget;
 using AppWandre.Classes;
 using AppWandre.Views;
 using PCLExt.FileStorage;
@@ -123,6 +124,7 @@ namespace AppWandre
         {
             if (string.IsNullOrEmpty(searchBarCarros.Text))
             {
+                Toast.MakeText(Android.App.Application.Context, "Aguarde...", ToastLength.Long).Show();
                 await ConsultandoCarros();
             }
             else

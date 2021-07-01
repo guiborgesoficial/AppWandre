@@ -1,4 +1,5 @@
 ﻿using Android.Graphics;
+using Android.Widget;
 using PCLExt.FileStorage;
 using PCLExt.FileStorage.Folders;
 using Plugin.SimpleAudioPlayer;
@@ -122,6 +123,8 @@ namespace AppWandre.Views
 
         private async void ImageButtonVerificado_Clicked(object sender, EventArgs e)
         {
+            Toast.MakeText(Android.App.Application.Context, "Aguarde...", ToastLength.Long).Show();
+
             imgRetornoCaptura.IsVisible = false;
             btnCancelado.IsVisible = false;
             btnVerificado.IsEnabled = false;
