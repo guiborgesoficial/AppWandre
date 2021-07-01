@@ -59,6 +59,8 @@ namespace AppWandre.Views
         }
         private async Task CapturandoFotos()
         {
+            Toast.MakeText(Android.App.Application.Context, "Aguarde...", ToastLength.Short).Show();
+
             if (contadorFotos < 10)
             {
                 LocalRootFolder localPasta = new LocalRootFolder();
@@ -123,8 +125,6 @@ namespace AppWandre.Views
 
         private async void ImageButtonVerificado_Clicked(object sender, EventArgs e)
         {
-            Toast.MakeText(Android.App.Application.Context, "Aguarde...", ToastLength.Long).Show();
-
             imgRetornoCaptura.IsVisible = false;
             btnCancelado.IsVisible = false;
             btnVerificado.IsEnabled = false;
