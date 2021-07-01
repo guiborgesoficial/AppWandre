@@ -60,11 +60,11 @@ namespace AppWandre.Views
                             {
                                 if(int.Parse(entryKM.Text.Replace(".","")) == 0)
                                 {
-                                    KM = " - ZERO KM";
+                                    KM = "-ZERO KM";
                                 }
                                 else
                                 {
-                                    KM = "- " + entryKM.Text + "\tKM";
+                                    KM = "-" + entryKM.Text + "\tKM";
                                 }
                             }
                             else
@@ -92,7 +92,7 @@ namespace AppWandre.Views
                                 {
                                     if (pickerCompleto.SelectedIndex == 1)
                                     {
-                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + pickerTipoMotor.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" +
+                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + "\t" + pickerTipoMotor.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" +
                                         entryDescricao.Text.ToUpper().Trim() + "\t-\t" + pickerCambio.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text.Trim() + KM,
                                         entryValor.Text.Trim(), @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower().Trim() + ".png",
                                         @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower().Trim() + "-" +
@@ -101,7 +101,7 @@ namespace AppWandre.Views
                                     }
                                     else
                                     {
-                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + pickerTipoMotor.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" +
+                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + "\t" + pickerTipoMotor.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" +
                                         entryDescricao.Text.ToUpper().Trim() + "\t-\t" + pickerCambio.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" + entryAno.Text.Trim() + KM,
                                         entryValor.Text.Trim(), @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower().Trim() + ".png",
                                         @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower().Trim() + "-" +
@@ -113,7 +113,7 @@ namespace AppWandre.Views
                                 {
                                     if (pickerCompleto.SelectedIndex == 1)
                                     {
-                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + pickerTipoMotor.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" +
+                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + "\t" + pickerTipoMotor.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" +
                                         entryDescricao.Text.ToUpper().Trim() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text.Trim() + KM,
                                         entryValor.Text.Trim(), @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower().Trim() + ".png",
                                         @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower().Trim() + "-" +
@@ -122,7 +122,7 @@ namespace AppWandre.Views
                                     }
                                     else
                                     {
-                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + pickerTipoMotor.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" +
+                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + "\t" + pickerTipoMotor.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" +
                                         entryDescricao.Text.ToUpper().Trim() + "\t-\t" + entryAno.Text.Trim() + KM,
                                         entryValor.Text.Trim(), @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower().Trim() + ".png",
                                         @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower().Trim() + "-" +
@@ -191,14 +191,13 @@ namespace AppWandre.Views
                         var arquivoCSV = await pastaCarroEspecifico.CreateFileAsync(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".csv"), CreationCollisionOption.OpenIfExists);
                         var arquivoTXT = await pastaCarroEspecifico.CreateFileAsync(string.Concat(entryModelo.Text.ToLower(), "-", entryPlaca.Text.ToUpper(), ".txt"), CreationCollisionOption.OpenIfExists);
 
-                        string descricaoCarroContent = string.Format("{0}\b{1} \n{2} \n{3} \n{4} \n{5} \n{6} \nPlaca {7} \n{8} KM \nR$ {9}",
+                        string descricaoCarroContent = string.Format("{0} {1} \n{2} \n{3} \n{4} \n{5} \n{6} \nPlaca {7} \n{8} KM \nR$ {9}",
                         pickerMarca.SelectedItem.ToString().ToUpper().Trim(), entryModelo.Text.ToUpper().Trim(), entryMotor.Text.Trim(), 
                         entryDescricao.Text.ToUpper().Trim(), entryAno.Text.Trim(), pickerTipoMotor.SelectedItem.ToString().Trim(), 
                         pickerCambio.SelectedItem.ToString().Trim(), entryPlaca.Text.ToUpper().Trim(), entryKM.Text.Trim(), entryValor.Text.Trim()
                         );
                         var file = new FileInfo(arquivoCSV.Path);
                         var format = new ExcelOutputTextFormat();
-                        await DisplayAlert("Erro", "Erro ao gerar planilha. Tire um print e contacte o desenvolvedor" + sheet.Cells, "Ok");
 
                         File.WriteAllBytes(arquivoXLSX.Path, excelPackage.GetAsByteArray());
                         await sheet.Cells["A1:F19"].SaveToTextAsync(file, format);

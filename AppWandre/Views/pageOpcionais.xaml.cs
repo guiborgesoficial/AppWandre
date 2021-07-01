@@ -76,12 +76,12 @@ namespace AppWandre.Views
                             {
                                 if(int.Parse(RetornoDadosCarro[7].Replace(".","").Replace("KM","")) == 0)
                                 {
-                                    contentOpcionais += string.Format("{0}, {1} e {2}, ZERO KM. ", RetornoOpcionais[i],
+                                    contentOpcionais += string.Format("{0}, {1} e {2}, ZERO KM.", RetornoOpcionais[i],
                                     RetornoOpcionais[indexVidros], RetornoOpcionais[indexTravas]);
                                 }
                                 else
                                 {
-                                    contentOpcionais += string.Format("{0}, {1} e {2} com {3}. ", RetornoOpcionais[i],
+                                    contentOpcionais += string.Format("{0}, {1} e {2} com {3}.", RetornoOpcionais[i],
                                     RetornoOpcionais[indexVidros], RetornoOpcionais[indexTravas], RetornoDadosCarro[7]);
                                 }
                             }
@@ -96,11 +96,11 @@ namespace AppWandre.Views
                             {
                                 if (int.Parse(RetornoDadosCarro[7].Replace(".", "").Replace("KM","")) == 0)
                                 {
-                                    contentOpcionais += string.Format("{0}, ZERO KM. ", RetornoOpcionais[i]);
+                                    contentOpcionais += string.Format("{0}, ZERO KM.", RetornoOpcionais[i]);
                                 }
                                 else
                                 {
-                                    contentOpcionais += string.Format("{0} com {1}. ", RetornoOpcionais[i], RetornoDadosCarro[7]);
+                                    contentOpcionais += string.Format("{0} com {1}.", RetornoOpcionais[i], RetornoDadosCarro[7]);
                                 }
                             }
                         }
@@ -125,7 +125,7 @@ namespace AppWandre.Views
                             }
                             else
                             {
-                                contentOpcionais += string.Format("{0}, {1} e {2}. ", RetornoOpcionais[i],
+                                contentOpcionais += string.Format("{0}, {1} e {2}.", RetornoOpcionais[i],
                                 RetornoOpcionais[indexVidros], RetornoOpcionais[indexTravas]);
                             }
                         }
