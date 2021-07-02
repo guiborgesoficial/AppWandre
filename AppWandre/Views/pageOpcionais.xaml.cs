@@ -145,15 +145,33 @@ namespace AppWandre.Views
 
                 if(RetornoDadosCarro[4].Contains("Flex") || RetornoDadosCarro[4].Contains("Diesel"))
                 {
-                    string txtAnuncio = string.Format("\n{0}- {1}{2}- {3}- {4}com {5} \n\nPor apenas {6},00.",
-                    RetornoDadosCarro[0], RetornoDadosCarro[1], RetornoDadosCarro[4].ToUpper(), RetornoDadosCarro[2], RetornoDadosCarro[3], contentOpcionais, RetornoDadosCarro[8]);
-                    File.AppendAllText(arquivoCarroTxt.Path, txtAnuncio);
+                    if(RetornoDadosCarro[5].Contains("Automatico"))
+                    {
+                        string txtAnuncio = string.Format("\n{0}- {1}{2}-AUTOMÁTICO- {3}- {4}com {5} \n\nPor apenas {6},00.",
+                        RetornoDadosCarro[0], RetornoDadosCarro[1], RetornoDadosCarro[4].ToUpper(), RetornoDadosCarro[2], RetornoDadosCarro[3], contentOpcionais, RetornoDadosCarro[8]);
+                        File.AppendAllText(arquivoCarroTxt.Path, txtAnuncio);
+                    }
+                    else
+                    {
+                        string txtAnuncio = string.Format("\n{0}- {1}{2}- {3}- {4}com {5} \n\nPor apenas {6},00.",
+                        RetornoDadosCarro[0], RetornoDadosCarro[1], RetornoDadosCarro[4].ToUpper(), RetornoDadosCarro[2], RetornoDadosCarro[3], contentOpcionais, RetornoDadosCarro[8]);
+                        File.AppendAllText(arquivoCarroTxt.Path, txtAnuncio);
+                    }
                 }
                 else
                 {
-                    string txtAnuncio = string.Format("\n\n{0}- {1}- {2}- {3}com {4} \n\nPor apenas {5},00.",
-                    RetornoDadosCarro[0], RetornoDadosCarro[1], RetornoDadosCarro[2], RetornoDadosCarro[3], contentOpcionais, RetornoDadosCarro[8]);
-                    File.AppendAllText(arquivoCarroTxt.Path, txtAnuncio);
+                    if(RetornoDadosCarro[5].Contains("Automatico"))
+                    {
+                        string txtAnuncio = string.Format("\n\n{0}- {1}-AUTOMÁTICO-{2}- {3}com {4} \n\nPor apenas {5},00.",
+                        RetornoDadosCarro[0], RetornoDadosCarro[1], RetornoDadosCarro[2], RetornoDadosCarro[3], contentOpcionais, RetornoDadosCarro[8]);
+                        File.AppendAllText(arquivoCarroTxt.Path, txtAnuncio);
+                    }
+                    else
+                    {
+                        string txtAnuncio = string.Format("\n\n{0}- {1}- {2}- {3}com {4} \n\nPor apenas {5},00.",
+                        RetornoDadosCarro[0], RetornoDadosCarro[1], RetornoDadosCarro[2], RetornoDadosCarro[3], contentOpcionais, RetornoDadosCarro[8]);
+                        File.AppendAllText(arquivoCarroTxt.Path, txtAnuncio);
+                    }
                 }                
             }
             catch (Exception erro)
