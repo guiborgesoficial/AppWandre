@@ -129,8 +129,10 @@ namespace AppWandre.Views
             btnVerificado.IsEnabled = false;
             btnVerificado.IsVisible = false;
             boolImagemAprovada = true;
+
             if (boolImagemAprovada)
             {
+                await Task.Delay(2000);
                 await CapturandoFotos();
             }
         }

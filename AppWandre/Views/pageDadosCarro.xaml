@@ -34,8 +34,8 @@
             </Picker>
             <Entry x:Name="entryModelo" Placeholder="Modelo"></Entry>
             <Entry x:Name="entryDescricao" Placeholder="Descrição - ex: LTZ IMOTION"></Entry>
-            <Entry x:Name="entryAno" Placeholder="Ano" Keyboard="Numeric"></Entry>
-            <Entry x:Name="entryMotor" Placeholder="Motor - ex: 2.0" Keyboard="Numeric"></Entry>
+            <Entry x:Name="entryAno" Placeholder="Ano" Keyboard="Numeric" TextChanged="EntryAno_TextChanged"></Entry>
+            <Entry x:Name="entryMotor" Placeholder="Motor - ex: 2.0" Keyboard="Numeric" TextChanged="EntryMotor_TextChanged"></Entry>
             <Picker x:Name="pickerTipoMotor" Title="Tipo do Motor">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
@@ -54,8 +54,8 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
-            <Entry x:Name="entryKM" Placeholder="Kilometragem - ex: 14.780" Keyboard="Numeric"></Entry>
-            <Entry x:Name="entryValor" Placeholder="Valor - ex: 52.900" Keyboard="Numeric"></Entry>
+            <Entry x:Name="entryKM" Placeholder="Kilometragem - ex: 14.780" Keyboard="Numeric" TextChanged="EntryKM_TextChanged"></Entry>
+            <Entry x:Name="entryValor" Placeholder="Valor - ex: 52.900" Keyboard="Numeric" TextChanged="EntryValor_TextChanged"></Entry>
             <Picker x:Name="pickerCompleto" Title="Completo?">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">

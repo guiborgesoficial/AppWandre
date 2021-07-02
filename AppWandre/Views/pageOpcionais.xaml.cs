@@ -82,7 +82,7 @@ namespace AppWandre.Views
                                 else
                                 {
                                     contentOpcionais += string.Format("{0}, {1} e {2} com {3}.", RetornoOpcionais[i],
-                                    RetornoOpcionais[indexVidros], RetornoOpcionais[indexTravas], RetornoDadosCarro[7]);
+                                    RetornoOpcionais[indexVidros], RetornoOpcionais[indexTravas], RetornoDadosCarro[7].Trim());
                                 }
                             }
                         }
@@ -100,7 +100,7 @@ namespace AppWandre.Views
                                 }
                                 else
                                 {
-                                    contentOpcionais += string.Format("{0} com {1}.", RetornoOpcionais[i], RetornoDadosCarro[7]);
+                                    contentOpcionais += string.Format("{0} com {1}.", RetornoOpcionais[i], RetornoDadosCarro[7].Trim());
                                 }
                             }
                         }

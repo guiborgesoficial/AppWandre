@@ -2,6 +2,7 @@
 using PCLExt.FileStorage;
 using PCLExt.FileStorage.Folders;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -58,13 +59,13 @@ namespace AppWandre.Views
 
                             if (int.Parse(entryKM.Text.Replace(".", "")) < 80000)
                             {
-                                if(int.Parse(entryKM.Text.Replace(".","")) == 0)
+                                if(int.Parse(entryKM.Text.Replace(".", "")) == 0)
                                 {
                                     KM = "-ZERO KM";
                                 }
                                 else
                                 {
-                                    KM = "-" + entryKM.Text + "\tKM";
+                                    KM = "-" + entryKM.Text + " KM";
                                 }
                             }
                             else
@@ -92,7 +93,7 @@ namespace AppWandre.Views
                                 {
                                     if (pickerCompleto.SelectedIndex == 1)
                                     {
-                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + "\t" + pickerTipoMotor.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" +
+                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + " " + pickerTipoMotor.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" +
                                         entryDescricao.Text.ToUpper().Trim() + "\t-\t" + pickerCambio.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text.Trim() + KM,
                                         entryValor.Text.Trim(), @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower().Trim() + ".png",
                                         @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower().Trim() + "-" +
@@ -101,7 +102,7 @@ namespace AppWandre.Views
                                     }
                                     else
                                     {
-                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + "\t" + pickerTipoMotor.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" +
+                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + " " + pickerTipoMotor.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" +
                                         entryDescricao.Text.ToUpper().Trim() + "\t-\t" + pickerCambio.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" + entryAno.Text.Trim() + KM,
                                         entryValor.Text.Trim(), @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower().Trim() + ".png",
                                         @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower().Trim() + "-" +
@@ -113,7 +114,7 @@ namespace AppWandre.Views
                                 {
                                     if (pickerCompleto.SelectedIndex == 1)
                                     {
-                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + "\t" + pickerTipoMotor.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" +
+                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + " " + pickerTipoMotor.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" +
                                         entryDescricao.Text.ToUpper().Trim() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text.Trim() + KM,
                                         entryValor.Text.Trim(), @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower().Trim() + ".png",
                                         @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower().Trim() + "-" +
@@ -122,7 +123,7 @@ namespace AppWandre.Views
                                     }
                                     else
                                     {
-                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + "\t" + pickerTipoMotor.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" +
+                                        valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + " " + pickerTipoMotor.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" +
                                         entryDescricao.Text.ToUpper().Trim() + "\t-\t" + entryAno.Text.Trim() + KM,
                                         entryValor.Text.Trim(), @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower().Trim() + ".png",
                                         @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower().Trim() + "-" +
@@ -138,7 +139,7 @@ namespace AppWandre.Views
                                     if (pickerCompleto.SelectedIndex == 1)
                                     {
                                         valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + "\t-\t" +
-                                        entryDescricao.Text.ToUpper().Trim() + "\t-\t" + pickerCambio.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text.Trim() + KM,
+                                        entryDescricao.Text.ToUpper().Trim() + "\t-\t" + pickerCambio.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text.Trim() + " " + KM,
                                         entryValor.Text.Trim(), @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower().Trim() + ".png",
                                         @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower().Trim() + "-" +
                                         entryPlaca.Text.ToUpper().Trim() + @"\fotos\0" + foto.ToString() + ".jpeg"
@@ -147,7 +148,7 @@ namespace AppWandre.Views
                                     else
                                     {
                                         valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + "\t-\t" +
-                                        entryDescricao.Text.ToUpper().Trim() + "\t-\t" + pickerCambio.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" + entryAno.Text.Trim() + KM,
+                                        entryDescricao.Text.ToUpper().Trim() + "\t-\t" + pickerCambio.SelectedItem.ToString().ToUpper().Trim() + "\t-\t" + entryAno.Text.Trim() + " " + KM,
                                         entryValor.Text.Trim(), @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower().Trim() + ".png",
                                         @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower().Trim() + "-" +
                                         entryPlaca.Text.ToUpper().Trim() + @"\fotos\0" + foto.ToString() + ".jpeg"
@@ -159,7 +160,7 @@ namespace AppWandre.Views
                                     if (pickerCompleto.SelectedIndex == 1)
                                     {
                                         valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + "\t-\t" +
-                                        entryDescricao.Text.ToUpper().Trim() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text.Trim() + KM,
+                                        entryDescricao.Text.ToUpper().Trim() + "\t-\t" + "COMPLETO" + "\t-\t" + entryAno.Text.Trim() + " " + KM,
                                         entryValor.Text.Trim(), @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower().Trim() + ".png",
                                         @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower().Trim() + "-" +
                                         entryPlaca.Text.ToUpper().Trim() + @"\fotos\0" + foto.ToString() + ".jpeg"
@@ -168,7 +169,7 @@ namespace AppWandre.Views
                                     else
                                     {
                                         valores = new String[] {entryModelo.Text.ToUpper().Trim().Replace("\n",""), entryMotor.Text.Trim() + "\t-\t" +
-                                        entryDescricao.Text.ToUpper().Trim() + "\t-\t" + entryAno.Text.Trim() + KM,
+                                        entryDescricao.Text.ToUpper().Trim() + "\t-\t" + entryAno.Text.Trim() + " " + KM,
                                         entryValor.Text.Trim(), @"padrao_carro\marca\" + pickerMarca.SelectedItem.ToString().ToLower().Trim() + ".png",
                                         @"padrao_carro\loja\" + loja + ".png", @"carros_para_fazer_arte\" + entryModelo.Text.ToLower().Trim() + "-" +
                                         entryPlaca.Text.ToUpper().Trim() + @"\fotos\0" + foto.ToString() + ".jpeg"
@@ -225,11 +226,11 @@ namespace AppWandre.Views
         private bool VerificandoPreenchimentoFormulario()
         {
             var regexTratamentoInput = new Regex(@"^[a-zA-Z0-9-.\s]+$");
-            if (pickerMarca.SelectedIndex == -1 || entryModelo.Text == string.Empty || entryDescricao.Text == string.Empty
-               || entryAno.Text.Length != 4 || entryMotor.Text.Length != 3 ||
+            if (pickerMarca.SelectedIndex == -1 || string.IsNullOrEmpty(entryModelo.Text)|| string.IsNullOrEmpty(entryDescricao.Text)
+               || string.IsNullOrEmpty(entryAno.Text) || string.IsNullOrEmpty(entryMotor.Text) ||
                pickerTipoMotor.SelectedIndex == -1 || pickerCambio.SelectedIndex == -1 ||
-               entryKM.Text == string.Empty || entryValor.Text.Length < 5 || pickerCompleto.SelectedIndex == -1
-               || entryPlaca.Text == string.Empty
+               string.IsNullOrEmpty(entryKM.Text) || string.IsNullOrEmpty(entryValor.Text) || pickerCompleto.SelectedIndex == -1
+               || string.IsNullOrEmpty(entryPlaca.Text)
             )
             {
                 DisplayAlert("Campos Obrigatórios", "Preencha todos os campos!", "OK");
@@ -248,9 +249,17 @@ namespace AppWandre.Views
             }
             else
             {
-                if(!entryKM.Text.Contains(".") || !entryValor.Text.Contains(".") || !entryMotor.Text.Contains("."))
+                if(entryAno.Text.Length != 4 || entryMotor.Text.Length != 3 || entryValor.Text.Length < 5)
                 {
-                    DisplayAlert("Campos Incorretos", "Os campos KM e/ou Valor e/ou Motor estão incorretos. Utilize o ponto (.) como separador decimal.", "OK");
+                    DisplayAlert("Complete os campos", "Os campos Ano e/ou Motor e/ou Valor estão incompletos.", "OK");
+                    btnSalvar.IsEnabled = true;
+                    activIndicator.IsRunning = false;
+                    activIndicator.IsVisible = false;
+                    return false;
+                }
+                else if(entryAno.Text.Contains("."))
+                {
+                    DisplayAlert("Campo incorreto", "O campo Ano não admite o ponto (.).", "OK");
                     btnSalvar.IsEnabled = true;
                     activIndicator.IsRunning = false;
                     activIndicator.IsVisible = false;
@@ -258,21 +267,55 @@ namespace AppWandre.Views
                 }
                 else
                 {
-                    string[] retornoValor = entryValor.Text.Split('.');
-                    string[] retornoKM = entryValor.Text.Split('.');
-                    if (retornoValor[1].Length == 3 || retornoKM[1].Length == 3)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        DisplayAlert("Campos Incorretos", "Os campos KM e/ou Valor estão incorretos. Verifique a quantidade de zeros depois do separador decimal.", "OK");
-                        btnSalvar.IsEnabled = true;
-                        activIndicator.IsRunning = false;
-                        activIndicator.IsVisible = false;
-                        return false;
-                    }
+                    return true;
                 }
+            }
+        }
+
+        private void EntryKM_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                entryKM.Text = String.Format(new CultureInfo("pt-BR"), "{0:0,0}", Convert.ToInt32(entryKM.Text.Replace(".", "")));
+            }
+            catch
+            {
+                entryKM.Text = e.OldTextValue;
+            }
+        }
+
+        private void EntryValor_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                entryValor.Text = String.Format(new CultureInfo("pt-BR"), "{0:0,0}", Convert.ToInt32(entryValor.Text.Replace(".", "")));
+            }
+            catch
+            {
+                entryValor.Text = e.OldTextValue;
+            }
+        }
+
+        private void EntryMotor_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(entryMotor.Text.Length <= 3)
+            {
+                if(e.OldTextValue == null || e.OldTextValue.Length == 0)
+                { 
+                    entryMotor.Text += ".";
+                }
+            }
+            else
+            {
+                entryMotor.Text = e.OldTextValue;
+            }
+        }
+
+        private void EntryAno_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(entryAno.Text.Length > 4)
+            {
+                entryAno.Text = e.OldTextValue;
             }
         }
     }
